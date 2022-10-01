@@ -1,5 +1,6 @@
 package ru.liga;
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.text.DecimalFormat;
@@ -24,57 +25,61 @@ public class ExchangeRate {
         System.out.print("Введите нужный Вам вариант: ");
         int request1 = scan.nextInt();
         int request2;
-        switch (request1) {
-            case 1:
-                System.out.println("1. Курс валюты на завтрашний день");
-                System.out.println("2. Курс валюты на 7 дней");
-                System.out.print("Введите нужный Вам вариант: ");
-                request2 = scan.nextInt();
-                switch (request2) {
-                    case 1:
-                        System.out.println("rate EUR tomorrow: "+rateTomorrow(
-                                readerCSV("D:\\progi\\ExchangeRate\\src\\main\\resources\\EUR.csv")));
-                        break;
-                    case 2:
-                        System.out.println("rate EUR week: ");
-                        rateWeek(readerCSV("D:\\progi\\ExchangeRate\\src\\main\\resources\\EUR.csv"));
-                        break;
-                }
-                break;
+        try {
+            switch (request1) {
+                case 1:
+                    System.out.println("1. Курс валюты на завтрашний день");
+                    System.out.println("2. Курс валюты на 7 дней");
+                    System.out.print("Введите нужный Вам вариант: ");
+                    request2 = scan.nextInt();
+                    switch (request2) {
+                        case 1:
+                            System.out.println("rate EUR tomorrow: " + rateTomorrow(
+                                    readerCSV("src/main/resources/EUR.csv")));
+                            break;
+                        case 2:
+                            System.out.println("rate EUR week: ");
+                            rateWeek(readerCSV("src/main/resources/EUR.csv"));
+                            break;
+                    }
+                    break;
 
-            case 2:
-                System.out.println("1. Курс валюты на завтрашний день");
-                System.out.println("2. Курс валюты на 7 дней");
-                System.out.print("Выберите необходимый вариант: ");
-                request2 = scan.nextInt();
-                switch (request2) {
-                    case 1:
-                        System.out.println("rate USD tomorrow: "+rateTomorrow(
-                                readerCSV("D:\\progi\\ExchangeRate\\src\\main\\resources\\USD.csv")));
-                        break;
-                    case 2:
-                        System.out.println("rate USD week: ");
-                        rateWeek(readerCSV("D:\\progi\\ExchangeRate\\src\\main\\resources\\USD.csv"));
-                        break;
-                }
-                break;
+                case 2:
+                    System.out.println("1. Курс валюты на завтрашний день");
+                    System.out.println("2. Курс валюты на 7 дней");
+                    System.out.print("Выберите необходимый вариант: ");
+                    request2 = scan.nextInt();
+                    switch (request2) {
+                        case 1:
+                            System.out.println("rate USD tomorrow: " + rateTomorrow(
+                                    readerCSV("src/main/resources/USD.csv")));
+                            break;
+                        case 2:
+                            System.out.println("rate USD week: ");
+                            rateWeek(readerCSV("src/main/resources/USD.csv"));
+                            break;
+                    }
+                    break;
 
-            case 3:
-                System.out.println("1. Курс валюты на завтрашний день");
-                System.out.println("2. Курс валюты на 7 дней");
-                System.out.print("Выберите необходимый вариант: ");
-                request2 = scan.nextInt();
-                switch (request2) {
-                    case 1:
-                        System.out.println("rate TRY tomorrow: " +rateTomorrow(
-                                readerCSV("D:\\progi\\ExchangeRate\\src\\main\\resources\\TRY.csv")));
-                        break;
-                    case 2:
-                        System.out.println("rate TRY week: ");
-                        rateWeek(readerCSV("D:\\progi\\ExchangeRate\\src\\main\\resources\\TRY.csv"));
-                        break;
-                }
-                break;
+                case 3:
+                    System.out.println("1. Курс валюты на завтрашний день");
+                    System.out.println("2. Курс валюты на 7 дней");
+                    System.out.print("Выберите необходимый вариант: ");
+                    request2 = scan.nextInt();
+                    switch (request2) {
+                        case 1:
+                            System.out.println("rate TRY tomorrow: " + rateTomorrow(
+                                    readerCSV("src/main/resources/TRY.csv")));
+                            break;
+                        case 2:
+                            System.out.println("rate TRY week: ");
+                            rateWeek(readerCSV("src/main/resources/TRY.csv"));
+                            break;
+                    }
+                    break;
+            }
+        }catch (FileNotFoundException exc){
+            System.out.println("Файл не найден");
         }
     }
 
@@ -83,23 +88,27 @@ public class ExchangeRate {
      * @return ArrayList<DateAndCourse> course
      */
     public static List readerCSV(String csvFile) throws IOException {
-        BufferedReader br = new BufferedReader(new FileReader(csvFile));
         String line;
         String[] cols;
         List<String> courseString = new ArrayList<>();
         List<String> dateString = new ArrayList<>();
         List<DateAndCourse> course = new ArrayList<>();
-        while ((line = br.readLine()) != null) {
-            cols = line.split(";");
-            courseString.add((cols[2]));
-            dateString.add((cols[1]));
-        }
-        courseString.remove(0);
-        dateString.remove(0);
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("M/d/yyyy");
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(csvFile));
+            while ((line = br.readLine()) != null) {
+                cols = line.split(";");
+                courseString.add((cols[2]));
+                dateString.add((cols[1]));
+            }
+            courseString.remove(0);
+            dateString.remove(0);
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("M/d/yyyy");
 
-        for (int i = 0, j = 0; i < courseString.size(); i++, j++) {
-            course.add(new DateAndCourse(Double.valueOf(courseString.get(i)), LocalDate.parse(dateString.get(j), formatter)));
+            for (int i = 0, j = 0; i < courseString.size(); i++, j++) {
+                course.add(new DateAndCourse(Double.valueOf(courseString.get(i)), LocalDate.parse(dateString.get(j), formatter)));
+            }
+        }catch (IndexOutOfBoundsException exc){
+            System.out.println("Файл не найден");
         }
         return course;
     }
