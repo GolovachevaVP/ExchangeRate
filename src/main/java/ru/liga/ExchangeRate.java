@@ -95,7 +95,7 @@ public class ExchangeRate {
      * @return возвращает день в формате d.MM.yyyy и курс в формате #.##
      */
     public static String rateTomorrow(List<DateAndCourse> course) {
-        LocalDate date = LocalDate.now();
+        LocalDate date = LocalDate.now().plusDays(1);
         DecimalFormat twoDForm = new DecimalFormat("#.##");
         while (!date.equals(course.get(0).date)) {
             double newCourse = 0;
@@ -120,7 +120,7 @@ public class ExchangeRate {
      * Выводит дни в формате d.MM.yyyy и курс в формате #.##
      */
     public static void rateWeek(List<DateAndCourse> course) {
-        LocalDate date = LocalDate.now().plusDays(6);
+        LocalDate date = LocalDate.now().plusDays(7);
         DecimalFormat twoDForm = new DecimalFormat("#.##");
         while (!date.equals(course.get(0).date)) {
             double newCourse = 0;
