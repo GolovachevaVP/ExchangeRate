@@ -23,81 +23,34 @@ public class ExchangeRate {
         boolean replay;
         do {
             replay = false;
-            System.out.println("Прогнозирование курса валют. \n1. Валюта - евро");
-            System.out.println("2. Валюта - доллар США");
-            System.out.println("3. Валюта - турецкая лира");
-            System.out.print("Введите нужный Вам вариант: ");
-            int request1 = scan.nextInt();
-            int request2;
+            System.out.print("Прогнозирование курса валют. Введите запрос, по образцу:\"USD tomorrow или USD week.\" " +
+                    "\nВведите Ваш запрос- ");
+            String request = scan.nextLine();
             try {
-                switch (request1) {
-                    case 1:
-                        do {
-                            replay = false;
-                            System.out.println("1. Курс валюты на завтрашний день");
-                            System.out.println("2. Курс валюты на 7 дней");
-                            System.out.print("Введите нужный Вам вариант: ");
-                            request2 = scan.nextInt();
-                            switch (request2) {
-                                case 1:
-                                    System.out.println("rate EUR tomorrow: " + rateTomorrow(
-                                            readerCSV("src/main/resources/EUR.csv")));
-                                    break;
-                                case 2:
-                                    System.out.println("rate EUR week: ");
-                                    rateWeek(readerCSV("src/main/resources/EUR.csv"));
-                                    break;
-                                default:
-                                    System.out.println("Неверный запрос");
-                                    replay = true;
-                            }
-                        } while (replay);
+                switch (request) {
+                    case "EUR tomorrow":
+                        System.out.println("rate EUR tomorrow: " + rateTomorrow(
+                                readerCSV("src/main/resources/EUR.csv")));
+                        break;
+                    case "USD tomorrow":
+                        System.out.println("rate USD tomorrow: " + rateTomorrow(
+                                readerCSV("src/main/resources/USD.csv")));
                         break;
 
-                    case 2:
-                        do {
-                            replay = false;
-                            System.out.println("1. Курс валюты на завтрашний день");
-                            System.out.println("2. Курс валюты на 7 дней");
-                            System.out.print("Выберите необходимый вариант: ");
-                            request2 = scan.nextInt();
-                            switch (request2) {
-                                case 1:
-                                    System.out.println("rate USD tomorrow: " + rateTomorrow(
-                                            readerCSV("src/main/resources/USD.csv")));
-                                    break;
-                                case 2:
-                                    System.out.println("rate USD week: ");
-                                    rateWeek(readerCSV("src/main/resources/USD.csv"));
-                                    break;
-                                default:
-                                    replay = true;
-                                    System.out.println("Неверный запрос");
-                            }
-                        } while (replay);
+                    case "TRY tomorrow":
+                        System.out.println("rate TRY tomorrow: " + rateTomorrow(
+                                readerCSV("src/main/resources/TRY.csv")));
                         break;
-
-                    case 3:
-                        do {
-                            replay = false;
-                            System.out.println("1. Курс валюты на завтрашний день");
-                            System.out.println("2. Курс валюты на 7 дней");
-                            System.out.print("Выберите необходимый вариант: ");
-                            request2 = scan.nextInt();
-                            switch (request2) {
-                                case 1:
-                                    System.out.println("rate TRY tomorrow: " + rateTomorrow(
-                                            readerCSV("src/main/resources/TRY.csv")));
-                                    break;
-                                case 2:
-                                    System.out.println("rate TRY week: ");
-                                    rateWeek(readerCSV("src/main/resources/TRY.csv"));
-                                    break;
-                                default:
-                                    replay = true;
-                                    System.out.println("Неверный запрос");
-                            }
-                        } while (replay);
+                    case "EUR week":
+                        System.out.println("rate EUR week: ");
+                        rateWeek(readerCSV("src/main/resources/EUR.csv"));
+                    case "USD week":
+                        System.out.println("rate USD week: ");
+                        rateWeek(readerCSV("src/main/resources/USD.csv"));
+                        break;
+                    case "TRY week":
+                        System.out.println("rate TRY week: ");
+                        rateWeek(readerCSV("src/main/resources/TRY.csv"));
                         break;
                     default:
                         replay = true;
