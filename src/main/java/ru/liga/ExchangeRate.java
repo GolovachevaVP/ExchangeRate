@@ -12,12 +12,18 @@ import java.util.*;
 
 public class ExchangeRate {
 
-    /**
-     * Диалоговое окно с пользователем.
-     */
 
     @SuppressWarnings("resource")
     public static void main(String[] args) throws Exception {
+        for (; ;){
+            dialogBox(args);
+        }
+    }
+
+    /**
+     * Диалоговое окно с пользователем.
+     */
+    public static void dialogBox(String[] args) throws Exception {
         Scanner scan = new Scanner(System.in);
         System.out.println("Прогнозирование курса валют. \n1. Валюта - евро");
         System.out.println("2. Валюта - доллар США");
@@ -41,6 +47,8 @@ public class ExchangeRate {
                             System.out.println("rate EUR week: ");
                             rateWeek(readerCSV("src/main/resources/EUR.csv"));
                             break;
+                        default:
+                            System.out.println("Неверный запрос");
                     }
                     break;
 
@@ -58,6 +66,8 @@ public class ExchangeRate {
                             System.out.println("rate USD week: ");
                             rateWeek(readerCSV("src/main/resources/USD.csv"));
                             break;
+                        default:
+                            System.out.println("Неверный запрос");
                     }
                     break;
 
@@ -75,8 +85,12 @@ public class ExchangeRate {
                             System.out.println("rate TRY week: ");
                             rateWeek(readerCSV("src/main/resources/TRY.csv"));
                             break;
+                        default:
+                            System.out.println("Неверный запрос");
                     }
                     break;
+                default:
+                    System.out.println("Неверный запрос");
             }
         }catch (FileNotFoundException exc){
             System.out.println("Файл не найден");
