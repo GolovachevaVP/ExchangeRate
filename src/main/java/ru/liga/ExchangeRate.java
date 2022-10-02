@@ -23,18 +23,15 @@ public class ExchangeRate {
         System.out.print("Прогнозирование курса валют. Введите запрос, по образцу:\"USD tomorrow или USD week.\" " +
                 "\nВведите Ваш запрос - ");
         String request = scan.nextLine();
-        String currencyType;
-        if (request.contains("tomorrow")) {
-            currencyType = request.replaceAll("tomorrow", "");
-            currencyType = currencyType.replaceAll(" ", "");
-            rateTomorrow(getCSVRows(currencyType), currencyType);
-        } else if (request.contains("week")) {
-            currencyType = request.replaceAll("week", "");
-            currencyType = currencyType.replaceAll(" ", "");
-            rateWeek(getCSVRows(currencyType), currencyType);
-        } else {
-            throw new WrongCurrencyException();
+        CurrencyValidation validationCurrency = new CurrencyValidation();
+        PredicateValidator validatorPredicate = new PredicateValidator();
+        if (validatorPredicate.validate(request).contains("tomorrow")) {
+            rateTomorrow(getCSVRows(validationCurrency.validate(request)), validationCurrency.validate(request));
         }
+        if (validatorPredicate.validate(request).contains("week")){
+            rateWeek(getCSVRows(validationCurrency.validate(request)), validationCurrency.validate(request));
+        }
+        initConsole();
     }
 
     public static void initConsole() throws IOException {
@@ -64,7 +61,7 @@ public class ExchangeRate {
             course.add(0, new DateAndCourse(newCourse, course.get(0).date.plusDays(1)));
         }
         System.out.println("rate " + currencyType + " tomorrow: " + localDateToString(course.get(0).date)
-                + " - "+twoDForm.format(course.get(0).course));
+                + " - " + twoDForm.format(course.get(0).course));
     }
 
     /**
@@ -84,7 +81,7 @@ public class ExchangeRate {
         }
         System.out.println("rate " + currencyType + " week: ");
         for (int i = 6; i >= 0; i--) {
-            System.out.println(localDateToString(course.get(i).date) + " - "+twoDForm.format(course.get(i).course));
+            System.out.println(localDateToString(course.get(i).date) + " - " + twoDForm.format(course.get(i).course));
         }
     }
 
