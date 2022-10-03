@@ -35,7 +35,14 @@ public class CSVReader {
                     courseString.add((cols[2]));
                     dateString.add((cols[1]));
                 }
-            }catch (NumberFormatException e){}
+            }catch (NumberFormatException e){
+                while ((line = br.readLine()) != null) {
+                    cols = line.split(";");
+                    course.add(new DateAndCourse(Double.parseDouble(cols[2]), LocalDate.parse(cols[1], formatter)));
+                    courseString.add((cols[2]));
+                    dateString.add((cols[1]));
+                }
+            }
 //            courseString.remove(0);
 //            dateString.remove(0);
 //
