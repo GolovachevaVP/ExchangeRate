@@ -25,22 +25,16 @@ public class CSVReader {
         List<String> dateString = new ArrayList<>();
         List<DateAndCourse> course = new ArrayList<>();
         String csvFilePath = "src/main/resources/" + currencyType + ".csv";
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("M/d/yyyy");
         try {
             BufferedReader br = new BufferedReader(new FileReader(csvFilePath));
-            try {
-                while ((line = br.readLine()) != null) {
-                    cols = line.split(";");
-                    course.add(new DateAndCourse(Double.parseDouble(cols[2]), LocalDate.parse(cols[1], formatter)));
-                    courseString.add((cols[2]));
-                    dateString.add((cols[1]));
-                }
-            }catch (NumberFormatException e){
-                while ((line = br.readLine()) != null) {
-                    cols = line.split(";");
-                    course.add(new DateAndCourse(Double.parseDouble(cols[2]), LocalDate.parse(cols[1], formatter)));
-                    courseString.add((cols[2]));
-                    dateString.add((cols[1]));
+            while ((line = br.readLine()) != null) {
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("M/d/yyyy");
+                cols = line.split(";");
+                try {
+                    double courseValue = Double.parseDouble(cols[2]);
+                    LocalDate date = LocalDate.parse(cols[1], formatter);
+                    course.add(new DateAndCourse(courseValue, date));
+                } catch (Exception e) {
                 }
             }
         }catch (FileNotFoundException e){
