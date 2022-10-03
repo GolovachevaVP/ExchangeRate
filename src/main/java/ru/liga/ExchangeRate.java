@@ -1,5 +1,6 @@
 package ru.liga;
 
+import ru.liga.predication.IPredication;
 import ru.liga.predication.TomorrowPredication;
 import ru.liga.predication.WeekPredication;
 
@@ -22,10 +23,10 @@ public class ExchangeRate {
                 "\nВведите Ваш запрос - ");
         String request = scan.nextLine();
         if (getCurrencyForData(request).contains("tomorrow")) {
-            TomorrowPredication.rate(getCSVRows(getCurrencyType(request)), getCurrencyType(request));
+            IPredication.select(getCurrencyType(request));
         }
         if (getCurrencyForData(request).contains("week")) {
-            WeekPredication.rate(getCSVRows(getCurrencyType(request)), getCurrencyType(request));
+            IPredication.select(getCurrencyType(request));
         }
         initConsole();
     }
