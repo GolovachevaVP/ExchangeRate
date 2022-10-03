@@ -1,13 +1,12 @@
 package ru.liga;
 
 import ru.liga.predication.IPredication;
-import ru.liga.predication.TomorrowPredication;
-import ru.liga.predication.WeekPredication;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Scanner;
 import static ru.liga.utils.CSVReader.getCSVRows;
-import static ru.liga.validation.UserDto.getCurrencyForData;
+import static ru.liga.validation.UserDto.getPredicatorType;
 import static ru.liga.validation.UserDto.getCurrencyType;
 
 public class ExchangeRate {
@@ -22,10 +21,15 @@ public class ExchangeRate {
         System.out.print("Прогнозирование курса валют. Введите запрос, по образцу:\"USD tomorrow или USD week.\" " +
                 "\nВведите Ваш запрос - ");
         String request = scan.nextLine();
-        if (getCurrencyForData(request).contains("tomorrow")) {
+        String currencyType = getCurrencyType(request);
+        List<DateAndCourse> csvRows = getCSVRows(currencyType);
+        String predicatorType = getPredicatorType(request);
+        IPredication predicator = IPredication.select(predicatorType);
+        predicator.rate(csvRows, currencyType);
+        if (getPredicatorType(request).contains("tomorrow")) {
             IPredication.select(getCurrencyType(request));
         }
-        if (getCurrencyForData(request).contains("week")) {
+        if (getPredicatorType(request).contains("week")) {
             IPredication.select(getCurrencyType(request));
         }
         initConsole();

@@ -11,7 +11,7 @@ public class UserDto {
         return currVal.validate(currency);
     }
 
-    public static String getCurrencyForData(String input) {
+    public static String getPredicatorType(String input) {
         PredicateValidator predicateValidator = new PredicateValidator();
         String predicate = predicateValidator.validate(input);
         return predicate;
