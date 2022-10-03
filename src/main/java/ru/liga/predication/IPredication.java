@@ -7,7 +7,7 @@ import java.util.List;
 public interface IPredication {
 
 
-    public void rate(List<DateAndCourse> course, String currencyType);
+    public List<String> rate(List<DateAndCourse> course, String currencyType);
 
     public static IPredication select(String type) {
         if (type.equals("week")) {

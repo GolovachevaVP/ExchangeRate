@@ -6,13 +6,16 @@ import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.TextStyle;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 
 public class TomorrowPredication implements IPredication{
 
-    public void rate(List<DateAndCourse> course, String currencyType)  {
+    public List<String> rate(List<DateAndCourse> course, String currencyType)  {
         LocalDate date = LocalDate.now().plusDays(1);
+        List<String> result = new ArrayList<>();
         DecimalFormat twoDForm = new DecimalFormat("#.##");
         while (!date.equals(course.get(0).date)) {
             double newCourse = 0;
@@ -22,8 +25,9 @@ public class TomorrowPredication implements IPredication{
             newCourse = newCourse / 7;
             course.add(0, new DateAndCourse(newCourse, course.get(0).date.plusDays(1)));
         }
-        System.out.println("rate " + currencyType + " tomorrow: " + localDateToString(course.get(0).date)
+        result.add("rate " + currencyType + " tomorrow: " + localDateToString(course.get(0).date)
                 + " - " + twoDForm.format(course.get(0).course));
+        return result;
     }
 
 
