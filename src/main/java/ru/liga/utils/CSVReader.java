@@ -20,7 +20,7 @@ public class CSVReader {
     public static List<DateAndCourse> getCSVRows(String currencyType) throws IOException {
         String line;
         final int COURSE_POSITION = 2;
-        final int DATE_POSOTION = 1;
+        final int DATE_POSITION = 1;
         List<DateAndCourse> course = new ArrayList<>();
         String csvFilePath = "src/main/resources/" + currencyType + ".csv";
         try {
@@ -31,7 +31,7 @@ public class CSVReader {
                 cols = line.split(";");
                 try {
                     double courseValue = Double.parseDouble(cols[COURSE_POSITION]);
-                    LocalDate date = LocalDate.parse(cols[DATE_POSOTION], formatter);
+                    LocalDate date = LocalDate.parse(cols[DATE_POSITION], formatter);
                     course.add(new DateAndCourse(courseValue, date));
                 } catch (Exception e) {
                 }
