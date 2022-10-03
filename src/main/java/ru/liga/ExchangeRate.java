@@ -3,18 +3,12 @@ package ru.liga;
 import ru.liga.predication.IPredication;
 
 import java.io.IOException;
-import java.text.DecimalFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.format.TextStyle;
 import java.util.List;
-import java.util.Locale;
 import java.util.Scanner;
 
-
 import static ru.liga.utils.CSVReader.getCSVRows;
-import static ru.liga.validation.UserDto.getPredicatorType;
 import static ru.liga.validation.UserDto.getCurrencyType;
+import static ru.liga.validation.UserDto.getPredicatorType;
 
 public class ExchangeRate {
 
@@ -32,9 +26,9 @@ public class ExchangeRate {
         List<DateAndCourse> csvRows = getCSVRows(currencyType);
         String predicatorType = getPredicatorType(request);
         IPredication predicator = IPredication.select(predicatorType);
-        System.out.println( predicator.rate(csvRows, currencyType));
-
-
+        for (String result : predicator.rate(csvRows, currencyType)) {
+            System.out.println(result);
+        }
         initConsole();
     }
 
