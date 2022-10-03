@@ -25,20 +25,24 @@ public class CSVReader {
         List<String> dateString = new ArrayList<>();
         List<DateAndCourse> course = new ArrayList<>();
         String csvFilePath = "src/main/resources/" + currencyType + ".csv";
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("M/d/yyyy");
         try {
             BufferedReader br = new BufferedReader(new FileReader(csvFilePath));
-            while ((line = br.readLine()) != null) {
-                cols = line.split(";");
-                courseString.add((cols[2]));
-                dateString.add((cols[1]));
-            }
-            courseString.remove(0);
-            dateString.remove(0);
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("M/d/yyyy");
-
-            for (int i = 0, j = 0; i < courseString.size(); i++, j++) {
-                course.add(new DateAndCourse(Double.valueOf(courseString.get(i)), LocalDate.parse(dateString.get(j), formatter)));
-            }
+            try {
+                while ((line = br.readLine()) != null) {
+                    cols = line.split(";");
+                    course.add(new DateAndCourse(Double.parseDouble(cols[2]), LocalDate.parse(cols[1], formatter)));
+                    courseString.add((cols[2]));
+                    dateString.add((cols[1]));
+                }
+            }catch (NumberFormatException e){}
+//            courseString.remove(0);
+//            dateString.remove(0);
+//
+//
+//            for (int i = 0, j = 0; i < courseString.size(); i++, j++) {
+//                course.add(new DateAndCourse(Double.valueOf(courseString.get(i)), LocalDate.parse(dateString.get(j), formatter)));
+//            }
         }catch (FileNotFoundException e){
             throw new RuntimeException("Для выбранной валюты нет данных");
         }
