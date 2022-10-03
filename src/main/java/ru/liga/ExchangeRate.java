@@ -8,6 +8,8 @@ import ru.liga.validation.PredicateValidator;
 import java.io.IOException;
 import java.util.Scanner;
 import static ru.liga.utils.CSVReader.getCSVRows;
+import static ru.liga.validation.UserDto.getCurrencyForData;
+import static ru.liga.validation.UserDto.getDataForCurrency;
 
 public class ExchangeRate {
 
@@ -21,15 +23,11 @@ public class ExchangeRate {
         System.out.print("Прогнозирование курса валют. Введите запрос, по образцу:\"USD tomorrow или USD week.\" " +
                 "\nВведите Ваш запрос - ");
         String request = scan.nextLine();
-        CurrencyValidation validationCurrency = new CurrencyValidation();
-        PredicateValidator validatorPredicate = new PredicateValidator();
-        TomorrowPredication predicationTomorrow = new TomorrowPredication();
-        WeekPredication weekTomorrow = new WeekPredication();
-        if (validatorPredicate.validate(request).contains("tomorrow")) {
-            predicationTomorrow.rate(getCSVRows(validationCurrency.validate(request)), validationCurrency.validate(request));
+        if (getCurrencyForData(request).contains("tomorrow")) {
+            TomorrowPredication.rate(getCSVRows(getDataForCurrency(request)), getDataForCurrency(request));
         }
-        if (validatorPredicate.validate(request).contains("week")){
-            weekTomorrow.rate(getCSVRows(validationCurrency.validate(request)), validationCurrency.validate(request));
+        if (getCurrencyForData(request).contains("week")) {
+            WeekPredication.rate(getCSVRows(getDataForCurrency(request)), getDataForCurrency(request));
         }
         initConsole();
     }

@@ -13,8 +13,8 @@ public class PredicateValidator implements IValidation {
 
     @Override
     public String validate(String input) {
-        ValidationDto validationDto = new ValidationDto();
-        String currencyForData = validationDto.getCurrencyForData(input);
+        String[] dataType = input.split("\\s+");
+        String currencyForData = dataType[1];
         if (!predicateList.contains(currencyForData.toLowerCase())) {
             throw new RuntimeException("Неверный диапазон прогноза");
         } else return currencyForData;

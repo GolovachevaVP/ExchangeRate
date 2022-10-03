@@ -5,12 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f322b795-d1f2-43c5-a8b9-b329e3623cf6" name="Changes" comment="2">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/liga/predication/IPredication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/liga/predication/TomorrowPredication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/liga/predication/WeekPredication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/liga/DateAndCourse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/liga/DateAndCourse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/liga/ExchangeRate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/liga/ExchangeRate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/liga/validation/CurrencyValidation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/liga/validation/CurrencyValidation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/liga/validation/PredicateValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/liga/validation/PredicateValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/liga/validation/ValidationDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/liga/validation/UserDto.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +101,7 @@
       <workItem from="1664550697791" duration="3000" />
       <workItem from="1664618063681" duration="23843000" />
       <workItem from="1664712815909" duration="7894000" />
-      <workItem from="1664789233310" duration="3830000" />
+      <workItem from="1664789233310" duration="7263000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <created>1664618140378</created>
@@ -188,7 +187,14 @@
       <option name="project" value="LOCAL" />
       <updated>1664791089569</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="2">
+      <created>1664794884695</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1664794884695</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
