@@ -17,10 +17,10 @@ public class CSVReader {
      *
      * @return ArrayList<DateAndCourse> course
      */
+    private static final int COURSE_POSITION = 2;
+    private static final int DATE_POSITION = 1;
     public static List<DateAndCourse> getCSVRows(String currencyType) throws IOException {
         String line;
-        final int COURSE_POSITION = 2;
-        final int DATE_POSITION = 1;
         List<DateAndCourse> course = new ArrayList<>();
         String csvFilePath = "src/main/resources/" + currencyType + ".csv";
         try {
