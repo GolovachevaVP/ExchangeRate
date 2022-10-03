@@ -43,13 +43,6 @@ public class CSVReader {
                     dateString.add((cols[1]));
                 }
             }
-//            courseString.remove(0);
-//            dateString.remove(0);
-//
-//
-//            for (int i = 0, j = 0; i < courseString.size(); i++, j++) {
-//                course.add(new DateAndCourse(Double.valueOf(courseString.get(i)), LocalDate.parse(dateString.get(j), formatter)));
-//            }
         }catch (FileNotFoundException e){
             throw new RuntimeException("Для выбранной валюты нет данных");
         }
