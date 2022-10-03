@@ -5,7 +5,16 @@ import ru.liga.DateAndCourse;
 import java.util.List;
 
 public interface IPredication {
-    public static void rate(List<DateAndCourse> course, String currencyType) {
 
+
+    public void rate(List<DateAndCourse> course, String currencyType);
+
+    public static IPredication select(String type) {
+        if (type.equals("week")) {
+            return new WeekPredication();
+        } else {
+            return new TomorrowPredication();
+        }
     }
+
 }

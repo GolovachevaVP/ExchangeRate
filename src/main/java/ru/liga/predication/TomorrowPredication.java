@@ -11,7 +11,7 @@ import java.util.Locale;
 
 public class TomorrowPredication implements IPredication{
 
-    public static void rate(List<DateAndCourse> course, String currencyType)  {
+    public void rate(List<DateAndCourse> course, String currencyType)  {
         LocalDate date = LocalDate.now().plusDays(1);
         DecimalFormat twoDForm = new DecimalFormat("#.##");
         while (!date.equals(course.get(0).date)) {
