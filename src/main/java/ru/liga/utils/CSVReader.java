@@ -40,7 +40,7 @@ public class CSVReader {
                 course.add(new DateAndCourse(Double.valueOf(courseString.get(i)), LocalDate.parse(dateString.get(j), formatter)));
             }
         }catch (FileNotFoundException e){
-            throw new RuntimeException("Неверный тип валюты");
+            throw new RuntimeException("Для выбранной валюты нет данных");
         }
         return course;
     }
