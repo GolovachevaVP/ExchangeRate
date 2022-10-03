@@ -8,12 +8,12 @@ import static ru.liga.CSVReader.getCSVRows;
 public class ValidationDto {
 
     public static String getDataForCurrency(String input) {
-        String[] currencyType = input.split(" ");
+        String[] currencyType = input.split("\\s+");
         return currencyType[0];
     }
 
     public static String getCurrencyForData(String input) {
-        String[] dataType = input.split(" ");
+        String[] dataType = input.split("\\s+");
         if(dataType.length!=1){
             return dataType[1];
         }
