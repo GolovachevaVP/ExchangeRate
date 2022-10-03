@@ -1,5 +1,8 @@
 package ru.liga;
 
+import ru.liga.validation.CurrencyValidation;
+import ru.liga.validation.PredicateValidator;
+
 import java.io.IOException;
 import java.text.DecimalFormat;
 import java.time.LocalDate;
@@ -9,7 +12,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
 
-import static ru.liga.CSVReader.getCSVRows;
+import static ru.liga.utils.CSVReader.getCSVRows;
 
 public class ExchangeRate {
 

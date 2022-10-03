@@ -1,4 +1,4 @@
-package ru.liga;
+package ru.liga.validation;
 
 import java.util.ArrayList;
 import java.util.List;
