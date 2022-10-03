@@ -26,12 +26,6 @@ public class ExchangeRate {
         String predicatorType = getPredicatorType(request);
         IPredication predicator = IPredication.select(predicatorType);
         predicator.rate(csvRows, currencyType);
-        if (getPredicatorType(request).contains("tomorrow")) {
-            IPredication.select(getCurrencyType(request));
-        }
-        if (getPredicatorType(request).contains("week")) {
-            IPredication.select(getCurrencyType(request));
-        }
         initConsole();
     }
 
