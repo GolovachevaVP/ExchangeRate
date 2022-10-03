@@ -17,6 +17,6 @@ public class ValidationDto {
         if(dataType.length!=1){
             return dataType[1];
         }
-       else throw new WrongCurrencyException("Неверный запрос");
+       else throw new RuntimeException("Неверный запрос");
     }
 }

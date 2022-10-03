@@ -19,7 +19,7 @@ public class CurrencyValidation implements IValidation {
         ValidationDto validationDto = new ValidationDto();
         String dataForCurrency = validationDto.getDataForCurrency(input);
         if (!currencyList.contains(dataForCurrency.toUpperCase())){
-            throw new WrongCurrencyException("Неверный тип валюты");
+            throw new RuntimeException("Неверный тип валюты");
         } else return dataForCurrency;
     }
 }

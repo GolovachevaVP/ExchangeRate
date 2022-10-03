@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.rmi.RemoteException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -37,7 +38,7 @@ public class CSVReader {
                 course.add(new DateAndCourse(Double.valueOf(courseString.get(i)), LocalDate.parse(dateString.get(j), formatter)));
             }
         }catch (FileNotFoundException e){
-            throw new WrongCurrencyException("Неверный тип валюты");
+            throw new RuntimeException("Неверный тип валюты");
         }
         return course;
     }

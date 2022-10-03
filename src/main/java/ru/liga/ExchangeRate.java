@@ -38,7 +38,7 @@ public class ExchangeRate {
         Scanner scan = new Scanner(System.in);
         try {
             invoke(scan);
-        } catch (WrongCurrencyException e) {
+        } catch (RuntimeException e) {
             System.out.println(e.getMessage());
             initConsole();
         }

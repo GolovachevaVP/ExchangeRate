@@ -16,7 +16,7 @@ public class PredicateValidator implements IValidation {
         ValidationDto validationDto = new ValidationDto();
         String currencyForData = validationDto.getCurrencyForData(input);
         if (!predicateList.contains(currencyForData.toLowerCase())) {
-            throw new WrongCurrencyException("Неверный диапазон прогноза");
+            throw new RuntimeException("Неверный диапазон прогноза");
         } else return currencyForData;
     }
 }
