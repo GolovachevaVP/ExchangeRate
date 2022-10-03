@@ -2,14 +2,12 @@ package ru.liga;
 
 import ru.liga.predication.TomorrowPredication;
 import ru.liga.predication.WeekPredication;
-import ru.liga.validation.CurrencyValidation;
-import ru.liga.validation.PredicateValidator;
 
 import java.io.IOException;
 import java.util.Scanner;
 import static ru.liga.utils.CSVReader.getCSVRows;
 import static ru.liga.validation.UserDto.getCurrencyForData;
-import static ru.liga.validation.UserDto.getDataForCurrency;
+import static ru.liga.validation.UserDto.getCurrencyType;
 
 public class ExchangeRate {
 
@@ -24,10 +22,10 @@ public class ExchangeRate {
                 "\nВведите Ваш запрос - ");
         String request = scan.nextLine();
         if (getCurrencyForData(request).contains("tomorrow")) {
-            TomorrowPredication.rate(getCSVRows(getDataForCurrency(request)), getDataForCurrency(request));
+            TomorrowPredication.rate(getCSVRows(getCurrencyType(request)), getCurrencyType(request));
         }
         if (getCurrencyForData(request).contains("week")) {
-            WeekPredication.rate(getCSVRows(getDataForCurrency(request)), getDataForCurrency(request));
+            WeekPredication.rate(getCSVRows(getCurrencyType(request)), getCurrencyType(request));
         }
         initConsole();
     }

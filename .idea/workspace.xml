@@ -8,8 +8,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/liga/ExchangeRate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/liga/ExchangeRate.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/liga/validation/CurrencyValidation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/liga/validation/CurrencyValidation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/liga/validation/PredicateValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/liga/validation/PredicateValidator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/liga/validation/ValidationDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/liga/validation/UserDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/liga/validation/UserDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/liga/validation/UserDto.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,7 +100,7 @@
       <workItem from="1664550697791" duration="3000" />
       <workItem from="1664618063681" duration="23843000" />
       <workItem from="1664712815909" duration="7894000" />
-      <workItem from="1664789233310" duration="7263000" />
+      <workItem from="1664789233310" duration="8765000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <created>1664618140378</created>
@@ -194,7 +193,14 @@
       <option name="project" value="LOCAL" />
       <updated>1664794884695</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="2">
+      <created>1664799001817</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1664799001817</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
