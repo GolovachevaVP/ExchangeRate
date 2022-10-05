@@ -7,9 +7,9 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 
+
+import static ru.liga.dto.UserDto.*;
 import static ru.liga.utils.CSVReader.getCSVRows;
-import static ru.liga.dto.UserDto.getCurrencyType;
-import static ru.liga.dto.UserDto.getPredicatorType;
 
 public class ExchangeRate {
 

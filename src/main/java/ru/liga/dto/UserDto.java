@@ -14,10 +14,14 @@ public class UserDto {
         return currVal.validate(currency);
     }
 
-    public static String getPredicatorType(String input) {
-        String[] dataType = input.split("\\s+");
-        String predicate= dataType[POSITION_FOR_DATA];
+    public static String getPredicatorType(String uuu) {
+        String[] dataType1 = uuu.split("\\s+");
+        String predicate= dataType1[POSITION_FOR_DATA];
         PredicateValidator predVal = new PredicateValidator();
         return predVal.validate(predicate);
     }
+
+
+
+
 }
