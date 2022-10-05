@@ -6,15 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="f322b795-d1f2-43c5-a8b9-b329e3623cf6" name="Changes" comment="2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/liga/DateAndCourse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/liga/dto/DateAndCourse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/liga/ExchangeRate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/liga/ExchangeRate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/liga/predication/IPredication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/liga/predication/IPredication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/liga/predication/TomorrowPredication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/liga/predication/TomorrowPredication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/liga/predication/WeekPredication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/liga/predication/WeekPredication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/liga/utils/CSVReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/liga/utils/CSVReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/liga/validation/CurrencyValidation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/liga/validation/CurrencyValidation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/liga/validation/UserDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/liga/dto/UserDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ru/liga/AppTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/liga/AppTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/liga/dto/DateAndCourse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/liga/dto/DateAndCourse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/liga/dto/UserDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/liga/dto/UserDto.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,7 +61,7 @@
       <recent name="ru.liga" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ExchangeRate">
+  <component name="RunManager" selected="JAR Application.mavendemo-1.0-SNAPSHOT.jar">
     <configuration name="ExchangeRate" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ru.liga.ExchangeRate" />
       <module name="ExchangeRate" />
@@ -87,8 +81,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.ExchangeRate" />
         <item itemvalue="JAR Application.mavendemo-1.0-SNAPSHOT.jar" />
+        <item itemvalue="Application.ExchangeRate" />
       </list>
     </recent_temporary>
   </component>
@@ -110,7 +104,7 @@
       <workItem from="1664868524370" duration="3417000" />
       <workItem from="1664982750539" duration="2379000" />
       <workItem from="1664986835633" duration="227000" />
-      <workItem from="1664994596655" duration="1671000" />
+      <workItem from="1664994596655" duration="3018000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <created>1664618140378</created>
@@ -329,7 +323,21 @@
       <option name="project" value="LOCAL" />
       <updated>1664984722003</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="2">
+      <created>1664996427518</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1664996427518</updated>
+    </task>
+    <task id="LOCAL-00033" summary="2">
+      <created>1664996685861</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1664996685861</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -365,9 +373,19 @@
           <option name="timeStamp" value="10" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/ru/liga/validation/CurrencyValidation.java</url>
-          <line>19</line>
-          <option name="timeStamp" value="11" />
+          <url>file://$PROJECT_DIR$/src/main/java/ru/liga/validation/PredicateValidator.java</url>
+          <line>15</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ru/liga/dto/UserDto.java</url>
+          <line>17</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ru/liga/dto/UserDto.java</url>
+          <line>10</line>
+          <option name="timeStamp" value="14" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

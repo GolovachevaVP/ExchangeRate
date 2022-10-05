@@ -23,7 +23,7 @@ public class DateAndCourse {
         this.date = date;
     }
 
-    public static String localDateToString(LocalDate date) {
+    public String localDateToString(LocalDate date) {
         Locale localeRu = new Locale("ru", "RU");
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.LL.yyyy");
         String formattedString = date.format(formatter);

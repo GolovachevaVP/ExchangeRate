@@ -14,7 +14,6 @@ import static ru.liga.dto.UserDto.getPredicatorType;
 public class ExchangeRate {
 
 
-    @SuppressWarnings("resource")
     public static void main(String[] args) throws IOException {
         initConsole();
     }

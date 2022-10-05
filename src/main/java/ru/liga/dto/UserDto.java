@@ -16,9 +16,8 @@ public class UserDto {
 
     public static String getPredicatorType(String input) {
         String[] dataType = input.split("\\s+");
-        String currencyForData = dataType[POSITION_FOR_DATA];
-        PredicateValidator predicateValidator = new PredicateValidator();
-        String predicate = predicateValidator.validate(input);
-        return predicate;
+        String predicate= dataType[POSITION_FOR_DATA];
+        PredicateValidator predVal = new PredicateValidator();
+        return predVal.validate(predicate);
     }
 }
