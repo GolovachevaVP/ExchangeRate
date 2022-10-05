@@ -1,7 +1,4 @@
-package ru.liga.dto;
-
-import ru.liga.validation.CurrencyValidation;
-import ru.liga.validation.PredicateValidator;
+package ru.liga.validation;
 
 public class UserDto {
     private static final int POSITION_FOR_CURRENCY = 0;
@@ -14,14 +11,9 @@ public class UserDto {
         return currVal.validate(currency);
     }
 
-    public static String getPredicatorType(String uuu) {
-        String[] dataType1 = uuu.split("\\s+");
-        String predicate= dataType1[POSITION_FOR_DATA];
-        PredicateValidator predVal = new PredicateValidator();
-        return predVal.validate(predicate);
+    public static String getPredicatorType(String input) {
+        PredicateValidator predicateValidator = new PredicateValidator();
+        String predicate = predicateValidator.validate(input);
+        return predicate;
     }
-
-
-
-
 }
