@@ -5,7 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f322b795-d1f2-43c5-a8b9-b329e3623cf6" name="Changes" comment="2">
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/liga/utils/CSVReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/liga/utils/CSVReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/liga/DateAndCourse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/liga/DateAndCourse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/liga/ExchangeRate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/liga/ExchangeRate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/liga/predication/IPredication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/liga/predication/IPredication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/liga/predication/TomorrowPredication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/liga/predication/TomorrowPredication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/liga/predication/WeekPredication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/liga/predication/WeekPredication.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,6 +103,8 @@
       <workItem from="1664618063681" duration="23843000" />
       <workItem from="1664712815909" duration="7894000" />
       <workItem from="1664789233310" duration="10324000" />
+      <workItem from="1664868524370" duration="3417000" />
+      <workItem from="1664982750539" duration="1601000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <created>1664618140378</created>
@@ -274,7 +281,42 @@
       <option name="project" value="LOCAL" />
       <updated>1664824367682</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="2">
+      <created>1664824801429</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1664824801429</updated>
+    </task>
+    <task id="LOCAL-00027" summary="2">
+      <created>1664824873961</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1664824873961</updated>
+    </task>
+    <task id="LOCAL-00028" summary="2">
+      <created>1664825029416</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1664825029416</updated>
+    </task>
+    <task id="LOCAL-00029" summary="2">
+      <created>1664825133833</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1664825133833</updated>
+    </task>
+    <task id="LOCAL-00030" summary="2">
+      <created>1664825809974</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1664825809974</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -301,8 +343,13 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/ru/liga/predication/WeekPredication.java</url>
-          <line>18</line>
+          <line>19</line>
           <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ru/liga/predication/TomorrowPredication.java</url>
+          <line>15</line>
+          <option name="timeStamp" value="10" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

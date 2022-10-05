@@ -26,8 +26,8 @@ public class ExchangeRate {
         List<DateAndCourse> csvRows = getCSVRows(currencyType);
         String predicatorType = getPredicatorType(request);
         IPredication predicator = IPredication.select(predicatorType);
-        for (String result : predicator.rate(csvRows, currencyType)) {
-            System.out.println(result);
+        for (DateAndCourse result : predicator.rate(csvRows)) {
+            System.out.println(result.toString(currencyType));
         }
         initConsole();
     }
