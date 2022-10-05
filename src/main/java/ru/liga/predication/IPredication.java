@@ -1,6 +1,6 @@
 package ru.liga.predication;
 
-import ru.liga.DateAndCourse;
+import ru.liga.dto.DateAndCourse;
 
 import java.util.List;
 

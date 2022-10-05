@@ -1,17 +1,11 @@
 package ru.liga.predication;
 
-import ru.liga.DateAndCourse;
+import ru.liga.dto.DateAndCourse;
 
-import java.text.DecimalFormat;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.format.TextStyle;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Locale;
-
-import static ru.liga.DateAndCourse.localDateToString;
 
 public class WeekPredication implements IPredication {
     public List<DateAndCourse> rate(List<DateAndCourse> course) {

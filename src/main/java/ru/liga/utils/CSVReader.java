@@ -1,6 +1,6 @@
 package ru.liga.utils;
 
-import ru.liga.DateAndCourse;
+import ru.liga.dto.DateAndCourse;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;

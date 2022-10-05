@@ -1,4 +1,7 @@
-package ru.liga.validation;
+package ru.liga.dto;
+
+import ru.liga.validation.CurrencyValidation;
+import ru.liga.validation.PredicateValidator;
 
 public class UserDto {
     private static final int POSITION_FOR_CURRENCY = 0;

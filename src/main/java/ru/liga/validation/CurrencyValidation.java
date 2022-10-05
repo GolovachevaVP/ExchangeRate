@@ -3,6 +3,8 @@ package ru.liga.validation;
 import java.util.ArrayList;
 import java.util.List;
 
+import static ru.liga.dto.UserDto.getCurrencyType;
+
 public class CurrencyValidation implements IValidation {
 
     private final List<String> currencyList = new ArrayList<>();
@@ -14,9 +16,7 @@ public class CurrencyValidation implements IValidation {
 
     }
     @Override
-    public String validate(String input) {
-        String[] currencyType = input.split("\\s+");
-        String dataForCurrency = currencyType[0];
+    public String validate(String dataForCurrency) {
         if (!currencyList.contains(dataForCurrency.toUpperCase())){
             throw new RuntimeException("Неверный тип валюты");
         } else return dataForCurrency;

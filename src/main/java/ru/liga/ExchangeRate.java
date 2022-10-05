@@ -1,5 +1,6 @@
 package ru.liga;
 
+import ru.liga.dto.DateAndCourse;
 import ru.liga.predication.IPredication;
 
 import java.io.IOException;
@@ -7,8 +8,8 @@ import java.util.List;
 import java.util.Scanner;
 
 import static ru.liga.utils.CSVReader.getCSVRows;
-import static ru.liga.validation.UserDto.getCurrencyType;
-import static ru.liga.validation.UserDto.getPredicatorType;
+import static ru.liga.dto.UserDto.getCurrencyType;
+import static ru.liga.dto.UserDto.getPredicatorType;
 
 public class ExchangeRate {
 
