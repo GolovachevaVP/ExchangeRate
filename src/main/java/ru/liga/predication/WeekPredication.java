@@ -20,10 +20,13 @@ public class WeekPredication implements IPredication {
             DateAndCourse dateAndCourse = new DateAndCourse(newCourse, course.get(0).
                     getDate().plusDays(1));
             course.add(0, dateAndCourse);
-            result.add(dateAndCourse);
+        }
+        for(int i=0; i<7; i++){
+            result.add(new DateAndCourse(course.get(i).getCourse(), course.get(i).getDate()));
         }
         Collections.reverse(result);
         return result;
+
     }
 
 }
