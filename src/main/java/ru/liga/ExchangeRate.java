@@ -23,8 +23,8 @@ public class ExchangeRate {
                 "\nВведите Ваш запрос - ");
         String request = scan.nextLine();
         String currencyType = getCurrencyType(request);
-        List<DateAndCourse> csvRows = getCSVRows(currencyType);
         String predicatorType = getPredicatorType(request);
+        List<DateAndCourse> csvRows = getCSVRows(currencyType);
         IPredication predicator = IPredication.select(predicatorType);
         for (DateAndCourse result : predicator.rate(csvRows)) {
             System.out.println(result.toString(currencyType));
