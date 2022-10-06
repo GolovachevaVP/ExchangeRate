@@ -47,7 +47,7 @@ public class ExchangeRate {
         try {
             invoke(scan);
         } catch (Exception e) {
-            //System.out.println(e.getMessage());
+            System.out.println("Неправильный запрос");
             initConsole();
         }
     }
@@ -97,7 +97,8 @@ public class ExchangeRate {
             newCourse = newCourse / 7;
             course.add(0, new DateAndCourse(newCourse, course.get(0).date.plusDays(1)));
         }
-        System.out.println("rate " + currencyType + " tomorrow:" + localDateToString(course.get(0).date) + twoDForm.format(course.get(0).course));
+        System.out.println("rate " + currencyType + " tomorrow:" + localDateToString(course.get(0).date) +
+                " - " +twoDForm.format(course.get(0).course));
     }
 
     /**
@@ -117,13 +118,13 @@ public class ExchangeRate {
         }
         System.out.println("rate " + currencyType + " week:");
         for (int i = 6; i >= 0; i--) {
-            System.out.println(localDateToString(course.get(i).date) + twoDForm.format(course.get(i).course));
+            System.out.println(localDateToString(course.get(i).date) +" - " + twoDForm.format(course.get(i).course));
         }
     }
 
     private static String localDateToString(LocalDate date) {
         Locale localeRu = new Locale("ru", "RU");
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd LL yyyy");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.LL.yyyy");
         String formattedString = date.format(formatter);
         String dayOfWeek = date.getDayOfWeek().getDisplayName(TextStyle.SHORT, localeRu);
         return dayOfWeek + " " + formattedString;
