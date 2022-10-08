@@ -13,6 +13,9 @@ public class CurrencyValidation implements IValidation {
         currencyList.add("EUR");
         currencyList.add("USD");
         currencyList.add("TRY");
+        currencyList.add("BGN");
+        currencyList.add("AMD");
+
 
     }
     @Override

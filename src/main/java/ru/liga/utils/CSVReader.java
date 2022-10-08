@@ -26,7 +26,7 @@ public class CSVReader {
         try {
             BufferedReader br = new BufferedReader(new FileReader(csvFilePath));
             while ((line = br.readLine()) != null) {
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("M/d/yyyy");
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d.M.yyyy");
                 String[] cols = line.split(";");
                 try {
                     double courseValue = Double.parseDouble(cols[COURSE_POSITION]);
