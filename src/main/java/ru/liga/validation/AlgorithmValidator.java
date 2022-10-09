@@ -7,9 +7,9 @@ public class AlgorithmValidator implements IValidation{
     private final List<String> algorithmList = new ArrayList<>();
 
     {
-        algorithmList.add("mist");
-        algorithmList.add("linReg");
-        algorithmList.add("lastYear");
+        algorithmList.add("alg mist");
+        algorithmList.add("alg linReg");
+        algorithmList.add("alg lastYear");
 
 
     }

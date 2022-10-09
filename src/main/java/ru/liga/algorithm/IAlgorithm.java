@@ -10,9 +10,9 @@ public interface IAlgorithm {
 
     public Double algorithm(List<DateAndCourse> course, LocalDate date) ;
     public static IAlgorithm select(String type) {
-        if (type.equals("lastYear")) {
+        if (type.equals("alg lastYear")) {
             return new LastYear();
-        } else if (type.equals("mist")) {
+        } else if (type.equals("alg mist")) {
             return new Mystical();
         } else{
             return new predictionUsingLinearRegression();

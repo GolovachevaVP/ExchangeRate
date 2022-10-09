@@ -10,17 +10,17 @@ public class CurrencyValidation implements IValidation {
     private final List<String> currencyList = new ArrayList<>();
 
     {
-        currencyList.add("EUR");
-        currencyList.add("USD");
-        currencyList.add("TRY");
-        currencyList.add("BGN");
-        currencyList.add("AMD");
+        currencyList.add("eur");
+        currencyList.add("usd");
+        currencyList.add("try");
+        currencyList.add("bgn");
+        currencyList.add("amd");
 
 
     }
     @Override
     public String validate(String dataForCurrency) {
-        if (!currencyList.contains(dataForCurrency.toUpperCase())){
+        if (!currencyList.contains(dataForCurrency.toLowerCase())){
             throw new RuntimeException("Неверный тип валюты");
         } else return dataForCurrency;
     }

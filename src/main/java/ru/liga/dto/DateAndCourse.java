@@ -33,6 +33,6 @@ public class DateAndCourse {
 
     public String toString(String currencyType){
         DecimalFormat twoDForm = new DecimalFormat("#.##");
-        return "rate "+currencyType+" "+localDateToString(this.date)+" - "+twoDForm.format(this.course);
+        return localDateToString(this.date)+" - "+twoDForm.format(this.course);
     }
 }

@@ -1,6 +1,5 @@
 package ru.liga;
 
-import ru.liga.algorithm.IAlgorithm;
 import ru.liga.dto.DateAndCourse;
 import ru.liga.predication.IPredication;
 
@@ -22,15 +21,29 @@ public class ExchangeRate {
         System.out.print("Прогнозирование курса валют. Введите запрос, по образцу:\"USD tomorrow или USD week.\" " +
                 "\nВведите Ваш запрос - ");
         String request = scan.nextLine();
-        String currencyType = getCurrencyType(request);
+        String outputType = getOutputType(request);
         String predicatorType = getPredicatorType(request);
         String algorithmType = getAlgorithmType(request);
-        List<DateAndCourse> csvRows = getCSVRows(currencyType);
         IPredication predicator = IPredication.select(predicatorType);
-        for (DateAndCourse result : predicator.rate(csvRows, algorithmType)) {
-            System.out.println(result.toString(currencyType));
-        }
+        if (outputType.equals("") || outputType.equals("output list")) {
+            String currencyType = getCurrencyType(request);
+            List<DateAndCourse> csvRows = getCSVRows(currencyType);
+            System.out.println(request + ":");
+            for (DateAndCourse result : predicator.rate(csvRows, algorithmType)) {
+                System.out.println(result.toString(currencyType));
+            }
+        } else {
+            List<String> numberOfCurr = numberOfCurrencies(request);
+            IGraph graph = IGraph.select(numberOfCurr);
+            graph.initUI(numberOfCurr, predicator, algorithmType);
 
+//            EventQueue.invokeLater(() -> {
+//
+//                graph ex = new graph();
+//                ex.setVisible(true);
+//            });
+
+        }
         initConsole();
     }
 
