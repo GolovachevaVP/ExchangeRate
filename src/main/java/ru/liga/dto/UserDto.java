@@ -55,9 +55,9 @@ public class UserDto {
 
     public static String getPredicatorType(String input) {
         String[] pridicateType = input.split(" -");
-        String predicate = pridicateType[POSITION_FOR_DATA];
+        String[] predicate = pridicateType[POSITION_FOR_DATA].split(" ");
         PredicateValidator predVal = new PredicateValidator();
-        return predVal.validate(predicate);
+        return predVal.validate(predicate[1]);
     }
 
     public static String getAlgorithmType(String input) {

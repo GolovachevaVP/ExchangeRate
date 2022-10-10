@@ -4,6 +4,7 @@ import ru.liga.algorithm.IAlgorithm;
 import ru.liga.dto.DateAndCourse;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Collections;
 import java.util.List;
 
@@ -16,8 +17,8 @@ public class FutureDatePredication implements IPredication {
 
 
     public List<DateAndCourse> rate(List<DateAndCourse> course, String algorithmType) {
-        String[] dateStr = date.split(" ");
-        LocalDate futureDate = LocalDate.parse(dateStr[1]);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d.M.yyyy");
+        LocalDate futureDate = LocalDate.parse(date,formatter);
         double newCourse = 0;
         IAlgorithm alg = IAlgorithm.select(algorithmType);
         while (!futureDate.equals(course.get(0).getDate())) {

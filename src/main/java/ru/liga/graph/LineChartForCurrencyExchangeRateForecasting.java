@@ -3,41 +3,42 @@ package ru.liga.graph;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.axis.DateAxis;
 import org.jfree.chart.block.BlockBorder;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.plot.XYPlot;
 import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
 import org.jfree.chart.title.TextTitle;
+import org.jfree.data.time.Day;
+import org.jfree.data.time.TimeSeries;
+import org.jfree.data.time.TimeSeriesCollection;
 import org.jfree.data.xy.XYDataset;
-import org.jfree.data.xy.XYSeries;
-import org.jfree.data.xy.XYSeriesCollection;
-import ru.liga.algorithm.IAlgorithm;
 import ru.liga.dto.DateAndCourse;
 import ru.liga.predication.IPredication;
 
 import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import static ru.liga.utils.CSVReader.getCSVRows;
 
-public class LineChartOfOneCurrency extends JFrame implements IGraph {
-//    public LineChartOfOneCurrency() {
-//        initUI();
-//    }
-
+public class LineChartForCurrencyExchangeRateForecasting extends JFrame {
     public void initUI(List<String> numberOfCurr, IPredication predicator, String algorithmType) throws IOException {
-        String currencyType = numberOfCurr.get(0);
-        List<DateAndCourse> csvRows = getCSVRows(currencyType);
-        List <DateAndCourse> result = predicator.rate(csvRows, algorithmType);
+        TimeSeriesCollection dataset = new TimeSeriesCollection();
+        for (String currencyType : numberOfCurr) {
+            String curr = currencyType;
+            List<DateAndCourse> csvRows = getCSVRows(curr);
+            List<DateAndCourse> result = predicator.rate(csvRows, algorithmType);
+            dataset.addSeries(createDataset(result, curr));
+        }
 
-        XYDataset dataset = createDataset(result, currencyType);
-        JFreeChart chart = createChart(dataset);
-
+        JFreeChart chart = createChart(dataset, numberOfCurr);
         ChartPanel chartPanel = new ChartPanel(chart);
         chartPanel.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15));
         chartPanel.setBackground(Color.white);
+
         add(chartPanel);
 
         pack();
@@ -47,20 +48,20 @@ public class LineChartOfOneCurrency extends JFrame implements IGraph {
         setVisible(true);
     }
 
-    private XYDataset createDataset(List <DateAndCourse> result,  String currencyType) {
+    private TimeSeries createDataset(List<DateAndCourse> result, String currency) {
 
-        XYSeries series = new XYSeries(currencyType);
-        for(int i=0; i<result.size(); i++){
-            series.add(i, result.get(i).getCourse());
+        TimeSeries series = new TimeSeries(currency);
+        for (int i = 0; i < result.size(); i++) {
+            int day = result.get(i).getDate().getDayOfMonth();
+            int month =result.get(i).getDate().getMonthValue();
+            int year =result.get(i).getDate().getYear();
+            series.add(new Day(day, month,year), result.get(i).getCourse());
         }
 
-        XYSeriesCollection dataset = new XYSeriesCollection();
-        dataset.addSeries(series);
-
-        return dataset;
+        return series;
     }
 
-    private JFreeChart createChart(XYDataset dataset) {
+    private JFreeChart createChart(final XYDataset dataset, List<String> numberOfCurr) {
 
         JFreeChart chart = ChartFactory.createXYLineChart(
                 "Currency forecast",
@@ -76,8 +77,12 @@ public class LineChartOfOneCurrency extends JFrame implements IGraph {
         XYPlot plot = chart.getXYPlot();
 
         XYLineAndShapeRenderer renderer = new XYLineAndShapeRenderer();
-        renderer.setSeriesPaint(0, Color.RED);
-        renderer.setSeriesStroke(0, new BasicStroke(2.0f));
+
+        for (int i = 0; i < numberOfCurr.size(); i++) {
+            Color color = new Color((int) (Math.random() * 0x1000000));
+            renderer.setSeriesPaint(i, color);
+            renderer.setSeriesStroke(i, new BasicStroke(2.0f));
+        }
 
         plot.setRenderer(renderer);
         plot.setBackgroundPaint(Color.white);
@@ -91,12 +96,14 @@ public class LineChartOfOneCurrency extends JFrame implements IGraph {
         chart.getLegend().setFrame(BlockBorder.NONE);
 
         chart.setTitle(new TextTitle("Currency forecast",
-                        new Font("Serif", java.awt.Font.BOLD, 18)
+                        new Font("Serif", Font.BOLD, 18)
                 )
         );
 
+        DateAxis dateAxis = new DateAxis();
+        dateAxis.setDateFormatOverride(new SimpleDateFormat("dd.MM"));
+        plot.setDomainAxis(dateAxis);
+
         return chart;
     }
-
 }
-

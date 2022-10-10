@@ -1,6 +1,7 @@
 package ru.liga;
 
 import ru.liga.dto.DateAndCourse;
+import ru.liga.graph.LineChartForCurrencyExchangeRateForecasting;
 import ru.liga.predication.IPredication;
 
 import java.io.IOException;
@@ -34,14 +35,10 @@ public class ExchangeRate {
             }
         } else {
             List<String> numberOfCurr = numberOfCurrencies(request);
-            IGraph graph = IGraph.select(numberOfCurr);
+            LineChartForCurrencyExchangeRateForecasting graph = new LineChartForCurrencyExchangeRateForecasting();
             graph.initUI(numberOfCurr, predicator, algorithmType);
 
-//            EventQueue.invokeLater(() -> {
-//
-//                graph ex = new graph();
-//                ex.setVisible(true);
-//            });
+
 
         }
         initConsole();
