@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f322b795-d1f2-43c5-a8b9-b329e3623cf6" name="Changes" comment="2" />
+    <list default="true" id="f322b795-d1f2-43c5-a8b9-b329e3623cf6" name="Changes" comment="2">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/liga/graph/LineChartForCurrencyExchangeRateForecasting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/liga/graph/LineChartForCurrencyExchangeRateForecasting.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/liga/telegram_bot/servise/TelegramBot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/liga/telegram_bot/servise/TelegramBot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -69,7 +74,7 @@
       <recent name="ru.liga" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.BotApplication">
+  <component name="RunManager" selected="Application.ExchangeRate">
     <configuration name="Bot" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ru.liga.bot.Bot" />
       <module name="ExchangeRate_2.0" />
@@ -157,7 +162,7 @@
       <workItem from="1665403930483" duration="24866000" />
       <workItem from="1665437731656" duration="5171000" />
       <workItem from="1665474123381" duration="6787000" />
-      <workItem from="1665496651117" duration="3260000" />
+      <workItem from="1665496651117" duration="9218000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <created>1664618140378</created>
@@ -425,7 +430,14 @@
       <option name="project" value="LOCAL" />
       <updated>1665500185298</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="2">
+      <created>1665500412280</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1665500412280</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -105,7 +105,7 @@ public class LineChartForCurrencyExchangeRateForecasting extends JFrame {
         DateAxis dateAxis = new DateAxis();
         dateAxis.setDateFormatOverride(new SimpleDateFormat("dd.MM"));
         plot.setDomainAxis(dateAxis);
-        ChartUtils.saveChartAsPNG(new File("line_chart.png"), chart, 700, 600);
+        ChartUtils.saveChartAsPNG(new File("src/main/resources/line_chart.png"), chart, 700, 600);
         return chart;
     }
 }

@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ResourceUtils;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
@@ -14,6 +15,8 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 import ru.liga.telegram_bot.property.BotConfig;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.logging.Level;
 
@@ -45,13 +48,14 @@ public class TelegramBot extends TelegramLongPollingBot {
             String userName = update.getMessage().getChat().getFirstName();
             String answer = "";
             if(messageText.contains("graph")){
-                SendPhoto sendPhoto= new SendPhoto();
-                InputFile photo = new InputFile("D:\\progi\\ExchangeRate_2.0\\line_chart.png");
-                sendPhoto.setPhoto(photo);
-                sendPhoto.setChatId(String.valueOf(chatId));
-                //return sendPhoto;
 
-            }
+                try {
+                    sendPhoto(chatId);
+                } catch (FileNotFoundException | TelegramApiException e) {
+                    e.printStackTrace();
+                }
+
+            }else
             
 
             switch (messageText) {
@@ -61,10 +65,10 @@ public class TelegramBot extends TelegramLongPollingBot {
                 default:
                     try {
                         for(String s :invoke(chatId,messageText)){
-                            answer=s;
-                            sendMessage(chatId, answer);
-                        }
+                            answer+=s+"\n";
 
+                        }
+                        sendMessage(chatId, answer);
                     } catch (IOException e) {
                         throw new RuntimeException(e);
 
@@ -88,6 +92,15 @@ public class TelegramBot extends TelegramLongPollingBot {
             log.error("Ошибка при попытке отправки сообщения");
         }
 
+    }
+
+    private void sendPhoto(long chatId) throws FileNotFoundException, TelegramApiException {
+        File image = ResourceUtils.getFile("src/main/resources/line_chart.png");
+        SendPhoto sendPhoto= new SendPhoto();
+        sendPhoto.setPhoto(new InputFile(image));
+        sendPhoto.setChatId(String.valueOf(chatId));
+        sendPhoto.setCaption("График валют");
+        execute(sendPhoto);
     }
 
 }
