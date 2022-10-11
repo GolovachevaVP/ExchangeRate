@@ -55,6 +55,9 @@ public class UserDto {
 
     public static String getPredicatorType(String input) {
         String[] pridicateType = input.split(" -");
+        if(pridicateType.length<=1) {
+            throw new RuntimeException("Неправильный запрос");
+        }
         String[] predicate = pridicateType[POSITION_FOR_DATA].split(" ");
         PredicateValidator predVal = new PredicateValidator();
         return predVal.validate(predicate[1]);

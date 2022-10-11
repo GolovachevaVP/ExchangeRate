@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="f322b795-d1f2-43c5-a8b9-b329e3623cf6" name="Changes" comment="2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/liga/graph/LineChartForCurrencyExchangeRateForecasting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/liga/graph/LineChartForCurrencyExchangeRateForecasting.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/liga/dto/UserDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/liga/dto/UserDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/liga/telegram_bot/servise/TelegramBot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/liga/telegram_bot/servise/TelegramBot.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
@@ -74,7 +74,7 @@
       <recent name="ru.liga" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ExchangeRate">
+  <component name="RunManager" selected="Spring Boot.BotApplication">
     <configuration name="Bot" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ru.liga.bot.Bot" />
       <module name="ExchangeRate_2.0" />
@@ -119,6 +119,7 @@
       <method v="2" />
     </configuration>
     <configuration name="BotApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <option name="ACTIVE_PROFILES" value="bot.name = ExchangeRateMyVPBot bot.token =5636547560:AAHqLAf7CXPqhVmNdVkY6BcqccxoWOavuQg" />
       <module name="ExchangeRate_2.0" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="ru.liga.telegram_bot.BotApplication" />
       <method v="2">
@@ -162,7 +163,7 @@
       <workItem from="1665403930483" duration="24866000" />
       <workItem from="1665437731656" duration="5171000" />
       <workItem from="1665474123381" duration="6787000" />
-      <workItem from="1665496651117" duration="9218000" />
+      <workItem from="1665496651117" duration="13723000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <created>1664618140378</created>
@@ -437,7 +438,14 @@
       <option name="project" value="LOCAL" />
       <updated>1665500412280</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="2">
+      <created>1665507030920</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1665507030920</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -526,6 +534,16 @@
           <url>file://$PROJECT_DIR$/src/main/java/ru/liga/graph/LineChartForCurrencyExchangeRateForecasting.java</url>
           <line>38</line>
           <option name="timeStamp" value="77" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ru/liga/telegram_bot/servise/TelegramBot.java</url>
+          <line>61</line>
+          <option name="timeStamp" value="79" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ru/liga/telegram_bot/servise/TelegramBot.java</url>
+          <line>45</line>
+          <option name="timeStamp" value="80" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
