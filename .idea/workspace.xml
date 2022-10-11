@@ -5,26 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f322b795-d1f2-43c5-a8b9-b329e3623cf6" name="Changes" comment="2">
-      <change afterPath="$PROJECT_DIR$/Procfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/liga/bot/Bot.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/liga/bot/Utils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/liga/bot/command/operations/CurrencyForecastCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/liga/bot/command/service/HelpCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/liga/bot/command/service/ServiceCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/liga/bot/command/service/StartCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/liga/bot/nonCommand/NonCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/liga/telegram_bot/BotApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/liga/telegram_bot/config/BotInitializerConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/liga/telegram_bot/property/BotConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/liga/telegram_bot/servise/TelegramBot.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/liga/ExchangeRate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/liga/ExchangeRate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/liga/dto/UserDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/liga/dto/UserDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/liga/graph/LineChartOfFiveCurrenciesLineChartForCurrencyExchangeRateForecasting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/liga/graph/LineChartForCurrencyExchangeRateForecasting.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/liga/graph/LineChartOfFourCurrencies.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/liga/graph/LineChartOfOneCurrency.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/liga/graph/LineChartOfThreeCurrencies.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/liga/graph/LineChartOfTwoCurrencies.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/liga/predication/FutureDatePredication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/liga/predication/FutureDatePredication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/liga/predication/IPredication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/liga/predication/IPredication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/liga/validation/PredicateValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/liga/validation/PredicateValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/liga/bot/Bot.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/liga/bot/Utils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/liga/bot/command/operations/CurrencyForecastCommand.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/liga/bot/command/service/HelpCommand.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/liga/bot/command/service/ServiceCommand.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/liga/bot/command/service/StartCommand.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/liga/bot/nonCommand/NonCommand.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/liga/graph/LineChartForCurrencyExchangeRateForecasting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/liga/graph/LineChartForCurrencyExchangeRateForecasting.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/liga/predication/MonthPredication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/liga/predication/MonthPredication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/liga/validation/AlgorithmValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/liga/validation/AlgorithmValidator.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,7 +40,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="four" />
+        <entry key="$PROJECT_DIR$" value="two" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -58,15 +56,20 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/progi/ExchangeRate",
+    "last_opened_file_path": "D:/progi/Bot",
     "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2"
+    "project.structure.side.proportion": "0.2",
+    "spring.configuration.checksum": "e4af502a556d82dc66f8532c56436307"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -85,7 +88,7 @@
       <recent name="ru.liga" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Bot">
+  <component name="RunManager" selected="Spring Boot.BotApplication">
     <configuration name="Bot" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ru.liga.bot.Bot" />
       <module name="ExchangeRate_2.0" />
@@ -129,10 +132,17 @@
       <option name="JAR_PATH" value="$PROJECT_DIR$/target/mavendemo-1.0-SNAPSHOT.jar" />
       <method v="2" />
     </configuration>
+    <configuration name="BotApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="ExchangeRate_2.0" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="ru.liga.telegram_bot.BotApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Bot" />
         <item itemvalue="Application.ExchangeRate" />
+        <item itemvalue="Application.Bot" />
         <item itemvalue="Application.LineChartOfTwoCurrencies" />
         <item itemvalue="JAR Application.mavendemo-1.0-SNAPSHOT.jar" />
         <item itemvalue="JAR Application.mavendemo-1.0-SNAPSHOT.jar" />
@@ -164,6 +174,9 @@
       <workItem from="1665246390179" duration="729000" />
       <workItem from="1665315036118" duration="30335000" />
       <workItem from="1665403930483" duration="24866000" />
+      <workItem from="1665437731656" duration="5171000" />
+      <workItem from="1665474123381" duration="6787000" />
+      <workItem from="1665496651117" duration="2920000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <created>1664618140378</created>
@@ -417,7 +430,14 @@
       <option name="project" value="LOCAL" />
       <updated>1665343908226</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="2">
+      <created>1665438009627</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1665438009627</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -451,11 +471,6 @@
           <url>file://$PROJECT_DIR$/src/main/java/ru/liga/predication/TomorrowPredication.java</url>
           <line>14</line>
           <option name="timeStamp" value="29" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/ru/liga/algorithm/LastYear.java</url>
-          <line>18</line>
-          <option name="timeStamp" value="37" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/ru/liga/dto/UserDto.java</url>
@@ -501,6 +516,16 @@
           <url>file://$PROJECT_DIR$/src/main/java/ru/liga/bot/command/service/ServiceCommand.java</url>
           <line>23</line>
           <option name="timeStamp" value="71" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ru/liga/graph/LineChartForCurrencyExchangeRateForecasting.java</url>
+          <line>31</line>
+          <option name="timeStamp" value="76" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ru/liga/graph/LineChartForCurrencyExchangeRateForecasting.java</url>
+          <line>38</line>
+          <option name="timeStamp" value="77" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

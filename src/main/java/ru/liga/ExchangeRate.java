@@ -5,6 +5,7 @@ import ru.liga.graph.LineChartForCurrencyExchangeRateForecasting;
 import ru.liga.predication.IPredication;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -15,13 +16,12 @@ public class ExchangeRate {
 
 
     public static void main(String[] args) throws IOException {
-        initConsole();
+        invoke(12,"rate USD,TRY -period month -alg lastYear -output graph");
     }
 
-    public static void invoke(Scanner scan) throws IOException {
-        System.out.print("Прогнозирование курса валют. Введите запрос, по образцу:\"USD tomorrow или USD week.\" " +
-                "\nВведите Ваш запрос - ");
-        String request = scan.nextLine();
+    public static List<String>  invoke(long id,String text) throws IOException {
+        String request = text;
+        List<String> result = new ArrayList<>();
         String outputType = getOutputType(request);
         String predicatorType = getPredicatorType(request);
         String algorithmType = getAlgorithmType(request);
@@ -30,8 +30,8 @@ public class ExchangeRate {
             String currencyType = getCurrencyType(request);
             List<DateAndCourse> csvRows = getCSVRows(currencyType);
             System.out.println(request + ":");
-            for (DateAndCourse result : predicator.rate(csvRows, algorithmType)) {
-                System.out.println(result.toString(currencyType));
+            for (DateAndCourse res : predicator.rate(csvRows, algorithmType)) {
+                result.add(res.toString(currencyType));
             }
         } else {
             List<String> numberOfCurr = numberOfCurrencies(request);
@@ -40,18 +40,20 @@ public class ExchangeRate {
 
 
 
+
         }
-        initConsole();
+        return result;
+
     }
 
-    public static void initConsole() throws IOException {
-        Scanner scan = new Scanner(System.in);
-        try {
-            invoke(scan);
-        } catch (RuntimeException e) {
-            System.out.println(e.getMessage());
-            initConsole();
-        }
-    }
+//    public static void initConsole() throws IOException {
+//        Scanner scan = new Scanner(System.in);
+//        try {
+//            invoke(scan);
+//        } catch (RuntimeException e) {
+//            System.out.println(e.getMessage());
+//            initConsole();
+//        }
+//    }
 
 }

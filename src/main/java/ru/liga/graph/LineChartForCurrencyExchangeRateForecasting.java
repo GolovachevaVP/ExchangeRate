@@ -2,6 +2,7 @@ package ru.liga.graph;
 
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
+import org.jfree.chart.ChartUtils;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.axis.DateAxis;
 import org.jfree.chart.block.BlockBorder;
@@ -18,6 +19,7 @@ import ru.liga.predication.IPredication;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -61,7 +63,7 @@ public class LineChartForCurrencyExchangeRateForecasting extends JFrame {
         return series;
     }
 
-    private JFreeChart createChart(final XYDataset dataset, List<String> numberOfCurr) {
+    private JFreeChart createChart(final XYDataset dataset, List<String> numberOfCurr) throws IOException {
 
         JFreeChart chart = ChartFactory.createXYLineChart(
                 "Currency forecast",
@@ -103,7 +105,7 @@ public class LineChartForCurrencyExchangeRateForecasting extends JFrame {
         DateAxis dateAxis = new DateAxis();
         dateAxis.setDateFormatOverride(new SimpleDateFormat("dd.MM"));
         plot.setDomainAxis(dateAxis);
-
+        ChartUtils.saveChartAsPNG(new File("line_chart.png"), chart, 700, 600);
         return chart;
     }
 }

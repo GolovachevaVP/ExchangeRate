@@ -10,7 +10,7 @@ import java.util.List;
 
 public class MonthPredication implements IPredication {
     public List<DateAndCourse> rate(List<DateAndCourse> course, String algorithmType) {
-        LocalDate date = LocalDate.now().plusMonths(1);
+        LocalDate date = LocalDate.now().plusDays(30);
         List<DateAndCourse> result = new ArrayList<>();
         IAlgorithm alg = IAlgorithm.select(algorithmType);
         while (!date.equals(course.get(0).getDate())) {
