@@ -46,13 +46,12 @@ public class TelegramBot extends TelegramLongPollingBot {
             String answer = "";
             if (messageText.equals("/start")) {
                 answer = startCommandReceived(chatId, userName);
+                sendMessage(chatId, answer);
 
             } else {
                 try {
                     if (messageText.contains("graph")) {
-
                         invoke(chatId, messageText);
-
                         try {
                             sendPhoto(chatId);
                         } catch (FileNotFoundException | TelegramApiException e) {
