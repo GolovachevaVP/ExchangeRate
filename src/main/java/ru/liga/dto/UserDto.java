@@ -15,18 +15,14 @@ public class UserDto {
     private static final int POSITION_FOR_ALGOTITHM = 2;
     private static final int POSITION_FOR_OUPUT = 3;
 
-    public static String getCurrencyType(String input) {
-        String[] currencyType = input.split(" -");
-        String[] currency = currencyType[POSITION_FOR_CURRENCY].split(" ");
-        CurrencyValidation currVal = new CurrencyValidation();
-        return currVal.validate(currency[1]);
 
-    }
-
-    public static List<String> numberOfCurrencies(String input) {
+    public static List<String> searchCurrencies(String input) {
         List<String> numberOfCurrencyTypes =new ArrayList<>();
         String[] currencyType = input.split(" -");
         String[] currencyAndRate = currencyType[POSITION_FOR_CURRENCY].split(" ");
+        if(!currencyAndRate[0].equals("rate")){
+            throw new RuntimeException("Неправильно написано слово - rate");
+        }
         String[] currency = currencyAndRate[1].split(",");
         if (currency.length > 5) {
             throw new RuntimeException("Количество валют превышает 5");
@@ -45,7 +41,10 @@ public class UserDto {
 
     public static String getOutputType(String input) {
         String[] outrutType = input.split(" -");
-        if (outrutType.length == 4) {
+        if (outrutType.length != 4 && (outrutType[POSITION_FOR_DATA].equals("period week") ||
+                outrutType[POSITION_FOR_DATA].equals("period month"))) {
+            throw new RuntimeException("Неверный тип вывода");
+        }else if (outrutType.length == 4){
             String output = outrutType[POSITION_FOR_OUPUT];
             OutputValidator outVal = new OutputValidator();
             return outVal.validate(output);

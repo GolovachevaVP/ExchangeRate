@@ -35,4 +35,5 @@ public class DateAndCourse {
         DecimalFormat twoDForm = new DecimalFormat("#.##");
         return localDateToString(this.date)+" - "+twoDForm.format(this.course);
     }
+
 }

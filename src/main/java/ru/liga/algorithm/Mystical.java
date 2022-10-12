@@ -12,7 +12,6 @@ public class Mystical implements IAlgorithm {
         LocalDate start = LocalDate.of(2005,01,01);
         long years = ChronoUnit.YEARS.between(start, date);
         LocalDate randomDate = date.minusYears(new Random().nextInt((int)years+1));
-        //date = date.minusYears(1);
         double curs = 0;
         for (DateAndCourse dateFromThelist : course) {
             if (randomDate.equals(dateFromThelist.getDate())) {

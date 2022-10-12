@@ -6,7 +6,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class predictionUsingLinearRegression implements IAlgorithm {
+public class PredictionUsingLinearRegression implements IAlgorithm {
     public Double algorithm(List<DateAndCourse> course, LocalDate date) {
         List<Double> x = new ArrayList<>();
         List<Double> y = new ArrayList<>();

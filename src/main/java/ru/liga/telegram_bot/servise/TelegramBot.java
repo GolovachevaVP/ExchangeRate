@@ -42,38 +42,52 @@ public class TelegramBot extends TelegramLongPollingBot {
         if (update.hasMessage() && update.getMessage().hasText()) {
             String messageText = update.getMessage().getText();
             Long chatId = update.getMessage().getChatId();
-            String userName = update.getMessage().getChat().getFirstName();
             String answer = "";
             if (messageText.equals("/start")) {
-                answer = startCommandReceived(chatId, userName);
+                answer = startCommandReceived(chatId);
                 sendMessage(chatId, answer);
-
             } else {
                 try {
                     if (messageText.contains("graph")) {
-                        invoke(chatId, messageText);
+                        invoke(messageText);
                         try {
                             sendPhoto(chatId);
                         } catch (FileNotFoundException | TelegramApiException e) {
                             e.printStackTrace();
                         }
-                    } else
-                        for (String s : invoke(chatId, messageText)) {
+                    } else {
+                        for (String s : invoke(messageText)) {
                             answer += s + "\n";
                         }
-                    sendMessage(chatId, answer);
+                        sendMessage(chatId, answer);
+                    }
                 } catch (RuntimeException | IOException e) {
                     sendMessage(chatId, e.getMessage());
 
                 }
             }
-            //sendMessage(chatId, answer);
+
         }
     }
 
-    private String startCommandReceived(Long chatId, String userName) {
+    private String startCommandReceived(Long chatId) {
 
-        return "Hi " + userName + ", nice to meet you!";
+        return "Здравствуй! Я телеграм-бот, который поможет тебе узнать курс валюты.\n\n" +
+                "В моей программе есть несколько видов валют: USD, EUR, TRY, BGN, AND.\n" +
+                "Четыре возможных периода прогноза: day tomorrow (на завтра), day dd.MM.yyyy (на определённую дату, " +
+                "например, 12.10.2023), period week (на неделю), period month(на месяц).\n"+
+                "Разные алгоритмы расчёта курса валют: mist (мистический), lastYear (прошлогодний), linReg (линейная регрессия).\n" +
+                "Также, если выберешь период прогноза \"period week\" или \"period month\", не забудь указать " +
+                "один из двух возможных форматов вывода: output list (сообщением в чате), output graph (графиком в чате)!\n" +
+                "При выборе вывода \\\"output graph\\\", ты можешь запросить от 1 до 5 валют одновременно!\n\n" +
+                "Вот, несколько примеров, которые можно взять за основу твоих запросов:\n" +
+                "rate TRY -date tomorrow -alg mist\n" +
+                "rate TRY -date 22.02.2030 -alg mist\n" +
+                "rate USD -period week -alg mist -output list\n" +
+                "rate USD,TRY -period month -alg lastYear -output graph\n" +
+                "При выборе вывода \"output graph\", ты можешь запросить от 1 до 5 валют одновременно!\n\n" +
+                "С объяснением моего запуска я закончил, а теперь попробуй узнать у меня прогноз курса валют," +
+                " введя его в строку ввода сообщения!";
     }
 
     private void sendMessage(long chatId, String textToSend) {

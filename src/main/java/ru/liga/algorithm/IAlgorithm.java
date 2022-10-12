@@ -15,7 +15,7 @@ public interface IAlgorithm {
         } else if (type.equals("alg mist")) {
             return new Mystical();
         } else{
-            return new predictionUsingLinearRegression();
+            return new PredictionUsingLinearRegression();
         }
     }
 

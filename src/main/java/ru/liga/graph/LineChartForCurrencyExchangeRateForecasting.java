@@ -26,7 +26,8 @@ import java.util.List;
 
 import static ru.liga.utils.CSVReader.getCSVRows;
 
-public class LineChartForCurrencyExchangeRateForecasting extends JFrame {
+public class LineChartForCurrencyExchangeRateForecasting extends JFrame implements IGraph {
+
     public void initUI(List<String> numberOfCurr, IPredication predicator, String algorithmType) throws IOException {
         TimeSeriesCollection dataset = new TimeSeriesCollection();
         for (String currencyType : numberOfCurr) {
@@ -50,9 +51,9 @@ public class LineChartForCurrencyExchangeRateForecasting extends JFrame {
         setVisible(true);
     }
 
-    private TimeSeries createDataset(List<DateAndCourse> result, String currency) {
+    private static TimeSeries createDataset(List<DateAndCourse> result, String currency) {
 
-        TimeSeries series = new TimeSeries(currency);
+        TimeSeries series = new TimeSeries("rate "+currency);
         for (int i = 0; i < result.size(); i++) {
             int day = result.get(i).getDate().getDayOfMonth();
             int month =result.get(i).getDate().getMonthValue();
@@ -63,7 +64,7 @@ public class LineChartForCurrencyExchangeRateForecasting extends JFrame {
         return series;
     }
 
-    private JFreeChart createChart(final XYDataset dataset, List<String> numberOfCurr) throws IOException {
+    private static JFreeChart createChart(final XYDataset dataset, List<String> numberOfCurr) throws IOException {
 
         JFreeChart chart = ChartFactory.createXYLineChart(
                 "Currency forecast",
