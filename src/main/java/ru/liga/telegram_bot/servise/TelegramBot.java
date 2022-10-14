@@ -2,7 +2,9 @@ package ru.liga.telegram_bot.servise;
 
 
 import lombok.RequiredArgsConstructor;
+import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
+
 import org.springframework.stereotype.Service;
 import org.springframework.util.ResourceUtils;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
@@ -22,6 +24,7 @@ import static ru.liga.ExchangeRate.invoke;
 @Slf4j
 @Service
 @RequiredArgsConstructor
+
 public class TelegramBot extends TelegramLongPollingBot {
 
     private final BotConfig botConfig;
@@ -36,29 +39,41 @@ public class TelegramBot extends TelegramLongPollingBot {
         return botConfig.getToken();
     }
 
+    @SneakyThrows
     @Override
     public void onUpdateReceived(Update update) {
+
 
         if (update.hasMessage() && update.getMessage().hasText()) {
             String messageText = update.getMessage().getText();
             Long chatId = update.getMessage().getChatId();
             String answer = "";
             if (messageText.equals("/start")) {
+                log.info("пользователь ввел команду /start");
                 answer = startCommandReceived(chatId);
                 sendMessage(chatId, answer);
-            } else {
+            } else if (messageText.equals("/help")){
+                log.info("пользователь ввел команду /help");
+                answer = helpCommandReceived(chatId);
+                sendMessage(chatId, answer);
+            }
+            else {
                 try {
                     if (messageText.contains("graph")) {
+                        log.info("пользователь ввел запрос - {}",messageText);
                         invoke(messageText);
                         try {
+                            log.info("отправление графика курса валют на запрос пользователя");
                             sendPhoto(chatId);
                         } catch (FileNotFoundException | TelegramApiException e) {
                             e.printStackTrace();
                         }
                     } else {
+                        log.info("пользователь ввел запрос - {}",messageText);
                         for (String s : invoke(messageText)) {
                             answer += s + "\n";
                         }
+                        log.info("отправление сообщения с прогнозом курса валюты");
                         sendMessage(chatId, answer);
                     }
                 } catch (RuntimeException | IOException e) {
@@ -66,29 +81,9 @@ public class TelegramBot extends TelegramLongPollingBot {
 
                 }
             }
-
         }
     }
 
-    private String startCommandReceived(Long chatId) {
-
-        return "Здравствуй! Я телеграм-бот, который поможет тебе узнать курс валюты.\n\n" +
-                "В моей программе есть несколько видов валют: USD, EUR, TRY, BGN, AND.\n" +
-                "Четыре возможных периода прогноза: day tomorrow (на завтра), day dd.MM.yyyy (на определённую дату, " +
-                "например, 12.10.2023), period week (на неделю), period month(на месяц).\n"+
-                "Разные алгоритмы расчёта курса валют: mist (мистический), lastYear (прошлогодний), linReg (линейная регрессия).\n" +
-                "Также, если выберешь период прогноза \"period week\" или \"period month\", не забудь указать " +
-                "один из двух возможных форматов вывода: output list (сообщением в чате), output graph (графиком в чате)!\n" +
-                "При выборе вывода \\\"output graph\\\", ты можешь запросить от 1 до 5 валют одновременно!\n\n" +
-                "Вот, несколько примеров, которые можно взять за основу твоих запросов:\n" +
-                "rate TRY -date tomorrow -alg mist\n" +
-                "rate TRY -date 22.02.2030 -alg mist\n" +
-                "rate USD -period week -alg mist -output list\n" +
-                "rate USD,TRY -period month -alg lastYear -output graph\n" +
-                "При выборе вывода \"output graph\", ты можешь запросить от 1 до 5 валют одновременно!\n\n" +
-                "С объяснением моего запуска я закончил, а теперь попробуй узнать у меня прогноз курса валют," +
-                " введя его в строку ввода сообщения!";
-    }
 
     private void sendMessage(long chatId, String textToSend) {
         SendMessage message = new SendMessage(String.valueOf(chatId), textToSend);
@@ -109,5 +104,35 @@ public class TelegramBot extends TelegramLongPollingBot {
         execute(sendPhoto);
     }
 
+    private String startCommandReceived(Long chatId) {
+
+        return "Здравствуй! Я телеграм-бот, который поможет тебе узнать курс валюты.\n\n" +
+                "Вот, несколько примеров, которые можно взять за основу твоих запросов:\n" +
+                "rate TRY -date tomorrow -alg mist\n" +
+                "rate TRY -date 22.02.2030 -alg mist\n" +
+                "rate USD -period week -alg mist -output list\n" +
+                "rate USD,TRY -period month -alg lastYear -output graph\n\n" +
+                "С объяснением моего запуска я закончил, а теперь попробуй узнать у меня прогноз курса валют," +
+                " введя его в строку ввода сообщения! Если тебе нужна помощь, напиши /help";
+    }
+
+    private String helpCommandReceived(Long chatId) {
+
+        return "Чтобы запустить меня, ты должен в строке ввода написать сообщение по одному из образцов:\n\n" +
+                "\"Образец №1.\"\n\"rate 1 -day 2 -alg 3 \".\n\n" +
+                "Вместо цифры 1 подставь одну из валют: USD, EUR, TRY, BGN, AMD\n\n" +
+                "Вместо цифры 2 подставь один из периодов прогноза: tomorrow (на завтра), dd.MM.yyyy " +
+                "(на определённую дату, например, 12.10.2023) \n\n" +
+                "Вместо цифры 3 подставь один из алгоритмов расчёта курса валют: " +
+                "mist (мистический), lastYear (прошлогодний), linReg (линейная регрессия)\n\n\n" +
+                "\"Образец №2.\"\n\"rate 1 -period 2 -alg 3 -output 4\".\n\n" +
+                "Вместо цифры 1 подставь одну из валют: USD, EUR, TRY, BGN, AMD\n\n" +
+                "Вместо цифры 2 подставь один из периодов прогноза: week (на неделю), month (на месяц) \n\n" +
+                "Вместо цифры 3 подставь один из алгоритмов расчёта курса валют: " +
+                "mist (мистический), lastYear (прошлогодний), linReg (линейная регрессия)\n\n" +
+                "Вместо цифры 4 подставь один из форматов вывода: output list (сообщением в чате), " +
+                "output graph (графиком в чате)\n" +
+                "При выборе вывода \"output graph\", ты можешь запросить от 1 до 5 валют одновременно!";
+    }
 }
 

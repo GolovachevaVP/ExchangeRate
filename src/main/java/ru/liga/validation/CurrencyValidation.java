@@ -1,7 +1,10 @@
 package ru.liga.validation;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.util.ArrayList;
 import java.util.List;
+@Slf4j
 
 public class CurrencyValidation implements IValidation {
 
@@ -18,8 +21,12 @@ public class CurrencyValidation implements IValidation {
     }
     @Override
     public String validate(String dataForCurrency) {
+        log.debug("валидация типа валюты");
         if (!currencyList.contains(dataForCurrency.toLowerCase())){
             throw new RuntimeException("Неверный тип валюты");
-        } else return dataForCurrency;
+        } else{
+            log.debug("алгоритм отработан");
+            return dataForCurrency;
+        }
     }
 }

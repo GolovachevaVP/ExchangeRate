@@ -1,5 +1,6 @@
 package ru.liga.predication;
 
+import lombok.extern.slf4j.Slf4j;
 import ru.liga.algorithm.IAlgorithm;
 import ru.liga.dto.DateAndCourse;
 
@@ -7,9 +8,11 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+@Slf4j
 
 public class MonthPredication implements IPredication {
     public List<DateAndCourse> rate(List<DateAndCourse> course, String algorithmType) {
+        log.debug("прогнозирует курс валюты на месяц");
         LocalDate date = LocalDate.now().plusDays(30);
         List<DateAndCourse> result = new ArrayList<>();
         IAlgorithm alg = IAlgorithm.select(algorithmType);
@@ -25,6 +28,7 @@ public class MonthPredication implements IPredication {
             result.add(new DateAndCourse(course.get(i).getCourse(), course.get(i).getDate()));
         }
         Collections.reverse(result);
+        log.debug("алгоритм отработан");
         return result;
 
     }

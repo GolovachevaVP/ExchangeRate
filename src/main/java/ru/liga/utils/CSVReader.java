@@ -1,5 +1,6 @@
 package ru.liga.utils;
 
+import lombok.extern.slf4j.Slf4j;
 import ru.liga.dto.DateAndCourse;
 
 import java.io.BufferedReader;
@@ -10,6 +11,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+@Slf4j
 
 public class CSVReader {
     /**
@@ -20,6 +22,7 @@ public class CSVReader {
     private static final int COURSE_POSITION = 2;
     private static final int DATE_POSITION = 1;
     public static List<DateAndCourse> getCSVRows(String currencyType) throws IOException {
+        log.debug("читает файлы scv и добавляет в ArrayList дату и курс валюты");
         String line;
         List<DateAndCourse> course = new ArrayList<>();
         String csvFilePath = "src/main/resources/" + currencyType + ".csv";
@@ -38,6 +41,7 @@ public class CSVReader {
         } catch (FileNotFoundException e) {
             throw new RuntimeException("Для выбранной валюты нет данных");
         }
+        log.debug("алгоритм отработан");
         return course;
     }
 }

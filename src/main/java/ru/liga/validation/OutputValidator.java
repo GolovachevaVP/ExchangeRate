@@ -1,7 +1,10 @@
 package ru.liga.validation;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.util.ArrayList;
 import java.util.List;
+@Slf4j
 
 public class OutputValidator implements IValidation {
     private final List<String> outputList = new ArrayList<>();
@@ -13,8 +16,12 @@ public class OutputValidator implements IValidation {
     }
     @Override
     public String validate(String output) {
+        log.debug("валидация типа вывода");
         if (!outputList.contains(output)){
             throw new RuntimeException("Неверный тип вывода ");
-        } else return output;
+        } else{
+            log.debug("алгоритм отработан");
+            return output;
+        }
     }
 }

@@ -1,5 +1,6 @@
 package ru.liga.graph;
 
+import lombok.extern.slf4j.Slf4j;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.ChartUtils;
@@ -25,10 +26,12 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 
 import static ru.liga.utils.CSVReader.getCSVRows;
-
+@Slf4j
 public class LineChartForCurrencyExchangeRateForecasting extends JFrame implements IGraph {
 
     public void initUI(List<String> numberOfCurr, IPredication predicator, String algorithmType) throws IOException {
+        log.debug("обрабатывает информацию из других методов для постройки графика");
+
         TimeSeriesCollection dataset = new TimeSeriesCollection();
         for (String currencyType : numberOfCurr) {
             String curr = currencyType;
@@ -49,9 +52,12 @@ public class LineChartForCurrencyExchangeRateForecasting extends JFrame implemen
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
+
+        log.debug("алгоритм отработан");
     }
 
     private static TimeSeries createDataset(List<DateAndCourse> result, String currency) {
+        log.debug("обрабатывает данные для постройки графика");
 
         TimeSeries series = new TimeSeries("rate "+currency);
         for (int i = 0; i < result.size(); i++) {
@@ -60,12 +66,12 @@ public class LineChartForCurrencyExchangeRateForecasting extends JFrame implemen
             int year =result.get(i).getDate().getYear();
             series.add(new Day(day, month,year), result.get(i).getCourse());
         }
-
+        log.debug("алгоритм отработан");
         return series;
     }
 
     private static JFreeChart createChart(final XYDataset dataset, List<String> numberOfCurr) throws IOException {
-
+        log.debug("строит график и сохраняет его в png-формате.");
         JFreeChart chart = ChartFactory.createXYLineChart(
                 "Currency forecast",
                 "Period",
@@ -107,6 +113,7 @@ public class LineChartForCurrencyExchangeRateForecasting extends JFrame implemen
         dateAxis.setDateFormatOverride(new SimpleDateFormat("dd.MM"));
         plot.setDomainAxis(dateAxis);
         ChartUtils.saveChartAsPNG(new File("src/main/resources/line_chart.png"), chart, 700, 600);
+        log.debug("алгоритм отработан");
         return chart;
     }
 }
