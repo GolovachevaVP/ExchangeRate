@@ -55,7 +55,6 @@ public class LinearRegression {
     }
 
 
-
     /**
      * Returns the <em>y</em>-intercept &alpha; of the best of the best-fit line <em>y</em> = &alpha; + &beta; <em>x</em>.
      *

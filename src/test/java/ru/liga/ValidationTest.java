@@ -3,57 +3,57 @@ package ru.liga;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import ru.liga.validation.AlgorithmValidator;
-import ru.liga.validation.CurrencyValidation;
-import ru.liga.validation.OutputValidator;
-import ru.liga.validation.PredicateValidator;
+import ru.liga.validation.AlgorithmValidatorValidationImpl;
+import ru.liga.validation.CurrencyValidationValidationImpl;
+import ru.liga.validation.OutputValidatorValidationImpl;
+import ru.liga.validation.PredicateValidatorValidationImpl;
 
 public class ValidationTest {
     @Test
-    void courseValidationTestForTheCorrectCourse(){
-        CurrencyValidation currencyValidation = new CurrencyValidation();
-        Assertions.assertEquals("TRY", currencyValidation.validate("TRY"));
+    void courseValidationTestForTheCorrectCourse() {
+        CurrencyValidationValidationImpl currencyValidationValidationImpl = new CurrencyValidationValidationImpl();
+        Assertions.assertEquals("TRY", currencyValidationValidationImpl.validate("TRY"));
     }
 
     @Test
-    void courseValidationTestForTheWrongCourse(){
-        CurrencyValidation currencyValidation = new CurrencyValidation();
-        Assertions.assertThrows(RuntimeException.class, ()->currencyValidation.validate("PULA"));
+    void courseValidationTestForTheWrongCourse() {
+        CurrencyValidationValidationImpl currencyValidationValidationImpl = new CurrencyValidationValidationImpl();
+        Assertions.assertThrows(RuntimeException.class, () -> currencyValidationValidationImpl.validate("PULA"));
     }
 
     @Test
-    void predicateValidationTestForTheCorrectPredicate(){
-       PredicateValidator predicateValidator = new PredicateValidator();
-        Assertions.assertEquals("tomorrow", predicateValidator.validate("tomorrow"));
+    void predicateValidationTestForTheCorrectPredicate() {
+        PredicateValidatorValidationImpl predicateValidatorValidationImpl = new PredicateValidatorValidationImpl();
+        Assertions.assertEquals("tomorrow", predicateValidatorValidationImpl.validate("tomorrow"));
     }
 
     @Test
-    void predicateValidationTestForTheWrongPredicate(){
-        PredicateValidator predicateValidator = new PredicateValidator();
-        Assertions.assertThrows(RuntimeException.class, ()->predicateValidator.validate("12.02.23"));
+    void predicateValidationTestForTheWrongPredicate() {
+        PredicateValidatorValidationImpl predicateValidatorValidationImpl = new PredicateValidatorValidationImpl();
+        Assertions.assertThrows(RuntimeException.class, () -> predicateValidatorValidationImpl.validate("12.02.23"));
     }
 
     @Test
-    void algorithmValidationTestForTheCorrectAlgorithm(){
-        AlgorithmValidator algorithmValidator = new AlgorithmValidator();
-        Assertions.assertEquals("alg linReg", algorithmValidator.validate("alg linReg"));
+    void algorithmValidationTestForTheCorrectAlgorithm() {
+        AlgorithmValidatorValidationImpl algorithmValidatorValidationImpl = new AlgorithmValidatorValidationImpl();
+        Assertions.assertEquals("alg linReg", algorithmValidatorValidationImpl.validate("alg linReg"));
     }
 
     @Test
-    void algorithmValidationTestForTheWrongAlgorithm(){
-        AlgorithmValidator algorithmValidator = new AlgorithmValidator();
-        Assertions.assertThrows(RuntimeException.class, ()->algorithmValidator.validate("linReg"));
+    void algorithmValidationTestForTheWrongAlgorithm() {
+        AlgorithmValidatorValidationImpl algorithmValidatorValidationImpl = new AlgorithmValidatorValidationImpl();
+        Assertions.assertThrows(RuntimeException.class, () -> algorithmValidatorValidationImpl.validate("linReg"));
     }
 
     @Test
-    void outputValidationTestForTheCorrectOutput(){
-        OutputValidator outputValidator= new OutputValidator();
-        Assertions.assertEquals("output graph", outputValidator.validate("output graph"));
+    void outputValidationTestForTheCorrectOutput() {
+        OutputValidatorValidationImpl outputValidatorValidationImpl = new OutputValidatorValidationImpl();
+        Assertions.assertEquals("output graph", outputValidatorValidationImpl.validate("output graph"));
     }
 
     @Test
-    void outputValidationTestForTheWrongOutput(){
-        OutputValidator outputValidator= new OutputValidator();
-        Assertions.assertThrows(RuntimeException.class, ()->outputValidator.validate("listt"));
+    void outputValidationTestForTheWrongOutput() {
+        OutputValidatorValidationImpl outputValidatorValidationImpl = new OutputValidatorValidationImpl();
+        Assertions.assertThrows(RuntimeException.class, () -> outputValidatorValidationImpl.validate("listt"));
     }
 }

@@ -15,8 +15,8 @@ import org.jfree.data.time.Day;
 import org.jfree.data.time.TimeSeries;
 import org.jfree.data.time.TimeSeriesCollection;
 import org.jfree.data.xy.XYDataset;
-import ru.liga.dto.DateAndCourse;
-import ru.liga.predication.IPredication;
+import ru.liga.dto.DateAndCourseDto;
+import ru.liga.predication.Predication;
 
 import javax.swing.*;
 import java.awt.*;
@@ -26,17 +26,18 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 
 import static ru.liga.utils.CSVReader.getCSVRows;
-@Slf4j
-public class LineChartForCurrencyExchangeRateForecasting extends JFrame implements IGraph {
 
-    public void initUI(List<String> numberOfCurr, IPredication predicator, String algorithmType) throws IOException {
+@Slf4j
+public class LineChartForCurrencyExchangeRateForecastingGraphImpl extends JFrame implements Graph {
+
+    public void initUI(List<String> numberOfCurr, Predication predicator, String algorithmType) throws IOException {
         log.debug("обрабатывает информацию из других методов для постройки графика");
 
         TimeSeriesCollection dataset = new TimeSeriesCollection();
         for (String currencyType : numberOfCurr) {
             String curr = currencyType;
-            List<DateAndCourse> csvRows = getCSVRows(curr);
-            List<DateAndCourse> result = predicator.rate(csvRows, algorithmType);
+            List<DateAndCourseDto> csvRows = getCSVRows(curr);
+            List<DateAndCourseDto> result = predicator.rate(csvRows, algorithmType);
             dataset.addSeries(createDataset(result, curr));
         }
 
@@ -56,15 +57,15 @@ public class LineChartForCurrencyExchangeRateForecasting extends JFrame implemen
         log.debug("алгоритм отработан");
     }
 
-    private static TimeSeries createDataset(List<DateAndCourse> result, String currency) {
+    private static TimeSeries createDataset(List<DateAndCourseDto> result, String currency) {
         log.debug("обрабатывает данные для постройки графика");
 
-        TimeSeries series = new TimeSeries("rate "+currency);
+        TimeSeries series = new TimeSeries("rate " + currency);
         for (int i = 0; i < result.size(); i++) {
             int day = result.get(i).getDate().getDayOfMonth();
-            int month =result.get(i).getDate().getMonthValue();
-            int year =result.get(i).getDate().getYear();
-            series.add(new Day(day, month,year), result.get(i).getCourse());
+            int month = result.get(i).getDate().getMonthValue();
+            int year = result.get(i).getDate().getYear();
+            series.add(new Day(day, month, year), result.get(i).getCourse());
         }
         log.debug("алгоритм отработан");
         return series;

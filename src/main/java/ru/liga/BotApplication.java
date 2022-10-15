@@ -1,9 +1,10 @@
-package ru.liga.telegram_bot;
+package ru.liga;
 
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
 @Slf4j
 @SpringBootApplication
 public class BotApplication {

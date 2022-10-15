@@ -1,22 +1,23 @@
 package ru.liga.algorithm;
 
 import lombok.extern.slf4j.Slf4j;
-import ru.liga.dto.DateAndCourse;
+import ru.liga.dto.DateAndCourseDto;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+
 @Slf4j
-public class PredictionUsingLinearRegression implements IAlgorithm {
-    public Double algorithm(List<DateAndCourse> course, LocalDate date) {
+public class LinearAlgorithmImpl implements Algorithm {
+    public Double algorithm(List<DateAndCourseDto> course, LocalDate date) {
         log.debug("прогноз курса с помощью алгоритма - линейная регрессия");
         List<Double> x = new ArrayList<>();
         List<Double> y = new ArrayList<>();
         int count = 0;
-        for (DateAndCourse dateAndCourse : course) {
+        for (DateAndCourseDto dateAndCourseDto : course) {
             if (count <= 30) {
-                x.add((double) dateAndCourse.getDate().toEpochDay());
-                y.add(dateAndCourse.getCourse());
+                x.add((double) dateAndCourseDto.getDate().toEpochDay());
+                y.add(dateAndCourseDto.getCourse());
                 count++;
             } else break;
 

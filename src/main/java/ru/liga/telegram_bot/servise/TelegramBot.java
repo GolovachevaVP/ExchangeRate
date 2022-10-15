@@ -4,7 +4,6 @@ package ru.liga.telegram_bot.servise;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
-
 import org.springframework.stereotype.Service;
 import org.springframework.util.ResourceUtils;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
@@ -52,15 +51,14 @@ public class TelegramBot extends TelegramLongPollingBot {
                 log.info("пользователь ввел команду /start");
                 answer = startCommandReceived(chatId);
                 sendMessage(chatId, answer);
-            } else if (messageText.equals("/help")){
+            } else if (messageText.equals("/help")) {
                 log.info("пользователь ввел команду /help");
                 answer = helpCommandReceived(chatId);
                 sendMessage(chatId, answer);
-            }
-            else {
+            } else {
                 try {
                     if (messageText.contains("graph")) {
-                        log.info("пользователь ввел запрос - {}",messageText);
+                        log.info("пользователь ввел запрос - {}", messageText);
                         invoke(messageText);
                         try {
                             log.info("отправление графика курса валют на запрос пользователя");
@@ -69,7 +67,7 @@ public class TelegramBot extends TelegramLongPollingBot {
                             e.printStackTrace();
                         }
                     } else {
-                        log.info("пользователь ввел запрос - {}",messageText);
+                        log.info("пользователь ввел запрос - {}", messageText);
                         for (String s : invoke(messageText)) {
                             answer += s + "\n";
                         }
