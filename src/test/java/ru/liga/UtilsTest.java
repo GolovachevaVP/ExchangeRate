@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import static ru.liga.utils.ChekingTheEnteredRequest.*;
 import static ru.liga.utils.ChekingTheEnteredRequest.getAlgorithmType;
 
+
 public class UtilsTest {
     @Test
     void performsCheckOfTheCorrectCourse() {

@@ -18,7 +18,31 @@ public class ChekingTheEnteredRequest {
     private static final int POSITION_FOR_OUPUT = 3;
 
 
+    public static List<String> searchCurrencies(String input) {
+        log.debug("выделяет из запроса валюты и считает их количество");
+        List<String> numberOfCurrencyTypes = new ArrayList<>();
+        if (!input.contains("rate")) {
+            throw new RuntimeException("Неправильно написано слово - rate");
+        }
+        String[] currencyType = input.split(" -");
+        String currencyAndRate = currencyType[POSITION_FOR_CURRENCY].replaceAll("rate", "").replaceAll(" ", "");
 
+        String[] currency = currencyAndRate.split(",");
+        if (currency.length > 5) {
+            throw new RuntimeException("Количество валют превышает 5");
+        } else {
+            for (String curr : currency) {
+                CurrencyValidationValidationImpl currVal = new CurrencyValidationValidationImpl();
+                if (currVal.validate(curr) == "Неверный тип валюты") {
+                    throw new RuntimeException("Неверный тип валюты");
+                } else {
+                    numberOfCurrencyTypes.add(curr);
+                }
+            }
+        }
+        log.debug("алгоритм отработан");
+        return numberOfCurrencyTypes;
+    }
 
     public static String getOutputType(String input) {
         log.debug("выделяет и проверяет тип вывода в запросе пользователя");

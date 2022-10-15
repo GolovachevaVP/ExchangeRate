@@ -23,7 +23,6 @@ public class LastYearAlgorithmImpl implements Algorithm {
         } catch (IndexOutOfBoundsException e) {
             throw new RuntimeException("Нет значения за вчерашний день");
         }
-
         log.debug("алгоритм отработан");
         return curs;
     }

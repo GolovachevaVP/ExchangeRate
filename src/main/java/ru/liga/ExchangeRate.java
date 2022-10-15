@@ -14,6 +14,7 @@ import java.util.List;
 import static ru.liga.utils.ChekingTheEnteredRequest.*;
 import static ru.liga.utils.CSVReader.getCSVRows;
 
+
 @Slf4j
 
 public class ExchangeRate {
