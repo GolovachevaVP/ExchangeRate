@@ -76,7 +76,6 @@ public class TelegramBot extends TelegramLongPollingBot {
                     }
                 } catch (RuntimeException | IOException e) {
                     sendMessage(chatId, e.getMessage());
-
                 }
             }
         }
