@@ -1,7 +1,0 @@
-2022-10-16 08:25:38,814 INFO org.springframework.boot.StartupInfoLogger [main] Starting BotApplication using Java 17.0.2 on DESKTOP-G9A9H9N with PID 17884 (D:\progi\ExchangeRate_2.0\target\classes started by mi in D:\progi\ExchangeRate_2.0)
-2022-10-16 08:25:38,819 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to 1 default profile: "default"
-2022-10-16 08:25:41,464 INFO org.springframework.boot.StartupInfoLogger [main] Started BotApplication in 4.869 seconds (JVM running for 8.553)
-2022-10-16 08:25:47,307 INFO ru.liga.telegram_bot.servise.TelegramBot [ExchangeRateMyVPBot Telegram Executor] пользователь ввел команду /start
-2022-10-16 08:25:50,067 INFO ru.liga.telegram_bot.servise.TelegramBot [ExchangeRateMyVPBot Telegram Executor] пользователь ввел команду /help
-2022-10-16 08:25:56,820 INFO ru.liga.telegram_bot.servise.TelegramBot [ExchangeRateMyVPBot Telegram Executor] пользователь ввел запрос - rate USD,TRY -period month -alg lastYear -output graph
-2022-10-16 08:25:58,588 INFO ru.liga.telegram_bot.servise.TelegramBot [ExchangeRateMyVPBot Telegram Executor] отправление графика курса валют на запрос пользователя
