@@ -1,6 +1,5 @@
 package ru.liga.algorithm;
 
-
 import ru.liga.dto.DateAndCourseDto;
 
 import java.time.LocalDate;

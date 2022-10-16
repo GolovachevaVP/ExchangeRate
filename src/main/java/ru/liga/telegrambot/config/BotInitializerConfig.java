@@ -1,4 +1,4 @@
-package ru.liga.telegram_bot.config;
+package ru.liga.telegrambot.config;
 
 
 import lombok.RequiredArgsConstructor;
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.TelegramBotsApi;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
-import ru.liga.telegram_bot.servise.TelegramBot;
+import ru.liga.telegrambot.servise.TelegramBot;
 
 
 @Slf4j

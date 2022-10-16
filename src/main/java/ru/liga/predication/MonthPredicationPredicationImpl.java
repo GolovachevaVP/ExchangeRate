@@ -33,6 +33,5 @@ public class MonthPredicationPredicationImpl implements Predication {
         Collections.reverse(result);
         log.debug("алгоритм отработан");
         return result;
-
     }
 }

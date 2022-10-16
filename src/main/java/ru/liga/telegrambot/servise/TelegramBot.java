@@ -1,4 +1,4 @@
-package ru.liga.telegram_bot.servise;
+package ru.liga.telegrambot.servise;
 
 
 import lombok.RequiredArgsConstructor;
@@ -12,7 +12,7 @@ import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
 import org.telegram.telegrambots.meta.api.objects.InputFile;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
-import ru.liga.telegram_bot.property.BotConfig;
+import ru.liga.telegrambot.property.BotConfig;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -41,7 +41,6 @@ public class TelegramBot extends TelegramLongPollingBot {
     @SneakyThrows
     @Override
     public void onUpdateReceived(Update update) {
-
 
         if (update.hasMessage() && update.getMessage().hasText()) {
             String messageText = update.getMessage().getText();
@@ -81,7 +80,6 @@ public class TelegramBot extends TelegramLongPollingBot {
         }
     }
 
-
     private void sendMessage(long chatId, String textToSend) {
         SendMessage message = new SendMessage(String.valueOf(chatId), textToSend);
         try {
@@ -89,7 +87,6 @@ public class TelegramBot extends TelegramLongPollingBot {
         } catch (TelegramApiException e) {
             log.error("Ошибка при попытке отправки сообщения");
         }
-
     }
 
     private void sendPhoto(long chatId) throws FileNotFoundException, TelegramApiException {
@@ -102,7 +99,6 @@ public class TelegramBot extends TelegramLongPollingBot {
     }
 
     private String startCommandReceived(Long chatId) {
-
         return "Здравствуй! Я телеграм-бот, который поможет тебе узнать курс валюты.\n\n" +
                 "Вот, несколько примеров, которые можно взять за основу твоих запросов:\n" +
                 "rate TRY -date tomorrow -alg mist\n" +
@@ -114,7 +110,6 @@ public class TelegramBot extends TelegramLongPollingBot {
     }
 
     private String helpCommandReceived(Long chatId) {
-
         return "Чтобы запустить меня, ты должен в строке ввода написать сообщение по одному из образцов:\n\n" +
                 "\"Образец №1.\"\n\"rate 1 -day 2 -alg 3 \".\n\n" +
                 "Вместо цифры 1 подставь одну из валют: USD, EUR, TRY, BGN, AMD\n\n" +

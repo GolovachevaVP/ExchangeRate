@@ -51,8 +51,5 @@ public class ExchangeRate {
         }
         log.debug("алгоритм отработан");
         return result;
-
     }
-
-
 }

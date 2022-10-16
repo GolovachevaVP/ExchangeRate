@@ -20,7 +20,6 @@ public class LinearAlgorithmImpl implements Algorithm {
                 y.add(dateAndCourseDto.getCourse());
                 count++;
             } else break;
-
         }
         double[] xArray = new double[x.size()];
         double[] yArray = new double[y.size()];
@@ -32,8 +31,5 @@ public class LinearAlgorithmImpl implements Algorithm {
         LinearRegression linearRegression = new LinearRegression(xArray, yArray);
         log.debug("алгоритм отработан");
         return linearRegression.predict(date.toEpochDay());
-
     }
-
-
 }

@@ -29,7 +29,6 @@ import static ru.liga.utils.CSVReader.getCSVRows;
 
 @Slf4j
 public class LineChartForCurrencyExchangeRateForecastingGraphImpl extends JFrame implements Graph {
-
     public void initUI(List<String> numberOfCurr, Predication predicator, String algorithmType) throws IOException {
         log.debug("обрабатывает информацию из других методов для постройки графика");
 
@@ -85,7 +84,6 @@ public class LineChartForCurrencyExchangeRateForecastingGraphImpl extends JFrame
         );
 
         XYPlot plot = chart.getXYPlot();
-
         XYLineAndShapeRenderer renderer = new XYLineAndShapeRenderer();
 
         for (int i = 0; i < numberOfCurr.size(); i++) {

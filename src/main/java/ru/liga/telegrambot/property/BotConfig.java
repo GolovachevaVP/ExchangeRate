@@ -1,4 +1,4 @@
-package ru.liga.telegram_bot.property;
+package ru.liga.telegrambot.property;
 
 
 import lombok.Data;
@@ -15,6 +15,5 @@ public class BotConfig {
 
     @Value("${bot.token}")
     String token;
-
 
 }

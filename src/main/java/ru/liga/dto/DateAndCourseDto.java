@@ -9,13 +9,11 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.TextStyle;
 import java.util.Locale;
 
-@Slf4j
+@Slf4j  @Getter
 public class DateAndCourseDto {
-    @Getter
-    private double course;
-    @Getter
-    private LocalDate date;
 
+    private double course;
+    private LocalDate date;
 
     public DateAndCourseDto(Double course, LocalDate date) {
         this.course = course;
@@ -27,5 +25,4 @@ public class DateAndCourseDto {
         String result = forecastOutput.toString(course,date);
         return result;
     }
-
 }

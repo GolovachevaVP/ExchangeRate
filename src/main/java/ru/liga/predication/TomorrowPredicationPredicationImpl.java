@@ -27,8 +27,5 @@ public class TomorrowPredicationPredicationImpl implements Predication {
         DateAndCourseDto dateAndCourseDto = new DateAndCourseDto(newCourse, date);
         log.debug("алгоритм отработан");
         return Collections.singletonList(dateAndCourseDto);
-
     }
-
-
 }

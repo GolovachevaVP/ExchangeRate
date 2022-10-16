@@ -37,7 +37,7 @@ public class CSVReader {
                     double courseValue = Double.parseDouble(cols[COURSE_POSITION]);
                     LocalDate date = LocalDate.parse(cols[DATE_POSITION], formatter);
                     course.add(new DateAndCourseDto(courseValue, date));
-                } catch (Exception e) {
+                } catch (Exception ignored) {
                 }
             }
         } catch (FileNotFoundException e) {

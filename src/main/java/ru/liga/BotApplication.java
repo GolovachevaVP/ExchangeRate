@@ -14,5 +14,4 @@ public class BotApplication {
         SpringApplication.run(BotApplication.class, args);
         log.debug("алгоритм отработан");
     }
-
 }

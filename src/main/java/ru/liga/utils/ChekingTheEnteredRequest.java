@@ -17,7 +17,6 @@ public class ChekingTheEnteredRequest {
     private static final int POSITION_FOR_ALGOTITHM = 2;
     private static final int POSITION_FOR_OUPUT = 3;
 
-
     public static List<String> searchCurrencies(String input) {
         log.debug("выделяет из запроса валюты и считает их количество");
         List<String> numberOfCurrencyTypes = new ArrayList<>();
