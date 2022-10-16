@@ -1,14 +1,11 @@
 package ru.liga.algorithm;
-
 import lombok.extern.slf4j.Slf4j;
 import ru.liga.dto.DateAndCourseDto;
-
 import java.time.LocalDate;
 import java.util.List;
 
 @Slf4j
 public class LastYearAlgorithmImpl implements Algorithm {
-
     public Double algorithm(List<DateAndCourseDto> course, LocalDate date) {
         log.debug("прогноз курса с помощью алгоритма - прошлогодний");
         log.debug("выбрана дата {}", date);
