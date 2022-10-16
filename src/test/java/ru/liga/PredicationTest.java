@@ -12,6 +12,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import static ru.liga.enums.AlgorithmType.*;
+
 
 public class PredicationTest {
 
@@ -22,7 +24,7 @@ public class PredicationTest {
         List<DateAndCourseDto> tomorrowCurrence = new ArrayList<>();
         List<DateAndCourseDto> result = new ArrayList<>();
         tomorrowCurrence.add(0, new DateAndCourseDto(1.0, LocalDate.now().plusDays(1)));
-        result.add(tomorrowPredicationPredicationImpl.rate(currecyList, "alg linReg").get(0));
+        result.add(tomorrowPredicationPredicationImpl.rate(currecyList, LINEAR).get(0));
         Assertions.assertEquals(tomorrowCurrence.get(0).getCourse(), result.get(0).getCourse());
     }
 
@@ -32,7 +34,7 @@ public class PredicationTest {
         List<DateAndCourseDto> tomorrowCurrence = new ArrayList<>();
         List<DateAndCourseDto> result = new ArrayList<>();
         tomorrowCurrence.add(0, new DateAndCourseDto(1.0, LocalDate.now().plusDays(1)));
-        result.add(tomorrowPredicationPredicationImpl.rate(currecyList, "alg linReg").get(0));
+        result.add(tomorrowPredicationPredicationImpl.rate(currecyList, LINEAR).get(0));
         Assertions.assertEquals(tomorrowCurrence.get(0).getDate(), result.get(0).getDate());
     }
 
@@ -43,7 +45,7 @@ public class PredicationTest {
         List<DateAndCourseDto> futureDayOfTheCurrence = new ArrayList<>();
         List<DateAndCourseDto> result = new ArrayList<>();
         futureDayOfTheCurrence.add(0, new DateAndCourseDto(1.0, LocalDate.of(2022, 12, 15)));
-        result.add(futureDatePredicationPredicationImpl.rate(currecyList, "alg linReg").get(0));
+        result.add(futureDatePredicationPredicationImpl.rate(currecyList, LINEAR).get(0));
         Assertions.assertEquals(futureDayOfTheCurrence.get(0).getCourse(), result.get(0).getCourse());
     }
 
@@ -53,7 +55,7 @@ public class PredicationTest {
         List<DateAndCourseDto> futureDayOfTheCurrence = new ArrayList<>();
         List<DateAndCourseDto> result = new ArrayList<>();
         futureDayOfTheCurrence.add(0, new DateAndCourseDto(1.0, LocalDate.of(2022, 12, 15)));
-        result.add(futureDatePredicationPredicationImpl.rate(currecyList, "alg linReg").get(0));
+        result.add(futureDatePredicationPredicationImpl.rate(currecyList, LINEAR).get(0));
         Assertions.assertEquals(futureDayOfTheCurrence.get(0).getDate(), result.get(0).getDate());
     }
 
@@ -64,7 +66,7 @@ public class PredicationTest {
         List<DateAndCourseDto> weekCurrence = new ArrayList<>();
         List<DateAndCourseDto> result = new ArrayList<>();
         weekCurrence.add(0, new DateAndCourseDto(1.0, LocalDate.now().plusDays(7)));
-        result.add(weekPredicationPredicationImpl.rate(currecyList, "alg linReg").get(6));
+        result.add(weekPredicationPredicationImpl.rate(currecyList, LINEAR).get(6));
         Assertions.assertEquals(weekCurrence.get(0).getCourse(), result.get(0).getCourse());
     }
 
@@ -74,7 +76,7 @@ public class PredicationTest {
         List<DateAndCourseDto> weekCurrence = new ArrayList<>();
         List<DateAndCourseDto> result = new ArrayList<>();
         weekCurrence.add(0, new DateAndCourseDto(1.0, LocalDate.now().plusDays(7)));
-        result.add(weekPredicationPredicationImpl.rate(currecyList, "alg linReg").get(6));
+        result.add(weekPredicationPredicationImpl.rate(currecyList, LINEAR).get(6));
         Assertions.assertEquals(weekCurrence.get(0).getDate(), result.get(0).getDate());
     }
 
@@ -84,7 +86,7 @@ public class PredicationTest {
         List<DateAndCourseDto> monthCurrence = new ArrayList<>();
         List<DateAndCourseDto> result = new ArrayList<>();
         monthCurrence.add(0, new DateAndCourseDto(1.0, LocalDate.now().plusDays(30)));
-        result.add(monthPredicationPredicationImpl.rate(currecyList, "alg linReg").get(29));
+        result.add(monthPredicationPredicationImpl.rate(currecyList, LINEAR).get(29));
         Assertions.assertEquals(monthCurrence.get(0).getCourse(), result.get(0).getCourse());
     }
 
@@ -94,13 +96,11 @@ public class PredicationTest {
         List<DateAndCourseDto> monthCurrence = new ArrayList<>();
         List<DateAndCourseDto> result = new ArrayList<>();
         monthCurrence.add(0, new DateAndCourseDto(1.0, LocalDate.now().plusDays(30)));
-        result.add(monthPredicationPredicationImpl.rate(currecyList, "alg linReg").get(29));
+        result.add(monthPredicationPredicationImpl.rate(currecyList, LINEAR).get(29));
         Assertions.assertEquals(monthCurrence.get(0).getDate(), result.get(0).getDate());
     }
 
-
     List<DateAndCourseDto> currecyList = new ArrayList();
-
     {
         currecyList.add(new DateAndCourseDto(1.0, LocalDate.of(2022, 10, 5)));
         currecyList.add(new DateAndCourseDto(1.0, LocalDate.of(2022, 10, 4)));
@@ -132,7 +132,5 @@ public class PredicationTest {
         currecyList.add(new DateAndCourseDto(1.0, LocalDate.of(2022, 9, 6)));
         currecyList.add(new DateAndCourseDto(1.0, LocalDate.of(2022, 9, 5)));
         currecyList.add(new DateAndCourseDto(1.0, LocalDate.of(2022, 9, 4)));
-
-
     }
 }

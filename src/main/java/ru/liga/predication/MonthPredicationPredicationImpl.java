@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import ru.liga.algorithm.Algorithm;
 import ru.liga.algorithm.AlgorithmFactory;
 import ru.liga.dto.DateAndCourseDto;
+import ru.liga.enums.AlgorithmType;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -13,7 +14,7 @@ import java.util.List;
 @Slf4j
 
 public class MonthPredicationPredicationImpl implements Predication {
-    public List<DateAndCourseDto> rate(List<DateAndCourseDto> course, String algorithmType) {
+    public List<DateAndCourseDto> rate(List<DateAndCourseDto> course, AlgorithmType algorithmType) {
         log.debug("прогнозирует курс валюты на месяц");
         LocalDate date = LocalDate.now().plusDays(30);
         List<DateAndCourseDto> result = new ArrayList<>();

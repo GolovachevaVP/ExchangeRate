@@ -11,9 +11,9 @@ public class AlgorithmValidatorValidationImpl implements Validation {
     private final List<String> algorithmList = new ArrayList<>();
 
     {
-        algorithmList.add("alg mist");
-        algorithmList.add("alg linReg");
-        algorithmList.add("alg lastYear");
+        algorithmList.add("MIST");
+        algorithmList.add("LINEAR");
+        algorithmList.add("LAST_YEAR");
     }
 
     @Override
@@ -26,7 +26,6 @@ public class AlgorithmValidatorValidationImpl implements Validation {
             log.debug("алгоритм отработан");
             return algorithm;
         }
-
     }
 }
 

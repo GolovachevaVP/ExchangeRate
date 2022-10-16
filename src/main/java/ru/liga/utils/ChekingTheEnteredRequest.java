@@ -2,6 +2,7 @@ package ru.liga.utils;
 
 
 import lombok.extern.slf4j.Slf4j;
+import ru.liga.enums.AlgorithmType;
 import ru.liga.validation.AlgorithmValidatorValidationImpl;
 import ru.liga.validation.CurrencyValidationValidationImpl;
 import ru.liga.validation.OutputValidatorValidationImpl;
@@ -14,8 +15,9 @@ import java.util.List;
 public class ChekingTheEnteredRequest {
     private static final int POSITION_FOR_CURRENCY = 0;
     private static final int POSITION_FOR_DATA = 1;
-    private static final int POSITION_FOR_ALGOTITHM = 2;
+    private static final int POSITION_FOR_ALGORITHM = 2;
     private static final int POSITION_FOR_OUPUT = 3;
+    private static final int POSITION_FOR_ALGORITHM_TYPE = 1;
 
     public static List<String> searchCurrencies(String input) {
         log.debug("выделяет из запроса валюты и считает их количество");
@@ -70,12 +72,13 @@ public class ChekingTheEnteredRequest {
         return predVal.validate(predicate[POSITION_FOR_DATA]);
     }
 
-    public static String getAlgorithmType(String input) {
+    public static AlgorithmType getAlgorithmType(String input) {
         log.debug("выделяет из запроса алгоритм прогнозирования");
         String[] algorithmType = input.split(" -");
-        String alg = algorithmType[POSITION_FOR_ALGOTITHM];
+        String[] alg = algorithmType[POSITION_FOR_ALGORITHM].split(" ");
+
         AlgorithmValidatorValidationImpl algVal = new AlgorithmValidatorValidationImpl();
         log.debug("алгоритм отработан");
-        return algVal.validate(alg);
+        return AlgorithmType.valueOf(algVal.validate(alg[POSITION_FOR_ALGORITHM_TYPE]));
     }
 }

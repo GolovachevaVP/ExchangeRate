@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import ru.liga.algorithm.Algorithm;
 import ru.liga.algorithm.AlgorithmFactory;
 import ru.liga.dto.DateAndCourseDto;
+import ru.liga.enums.AlgorithmType;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -19,7 +20,7 @@ public class FutureDatePredicationPredicationImpl implements Predication {
         this.date = date;
     }
 
-    public List<DateAndCourseDto> rate(List<DateAndCourseDto> course, String algorithmType) {
+    public List<DateAndCourseDto> rate(List<DateAndCourseDto> course, AlgorithmType algorithmType) {
         log.debug("прогнозирует курс валюты на дату введенную пользователем");
         AlgorithmFactory algFactory = new AlgorithmFactory();
         Algorithm alg = algFactory.getAlgorithm(algorithmType);
