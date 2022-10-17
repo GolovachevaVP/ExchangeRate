@@ -17,6 +17,7 @@ import org.jfree.data.time.TimeSeriesCollection;
 import org.jfree.data.xy.XYDataset;
 import ru.liga.dto.DateAndCourseDto;
 import ru.liga.predication.Predication;
+import ru.liga.utils.CSVReader;
 
 import javax.swing.*;
 import java.awt.*;
@@ -24,8 +25,6 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.List;
-
-import static ru.liga.utils.CSVReader.getCSVRows;
 
 @Slf4j
 public class LineChartForCurrencyExchangeRateForecastingGraphImpl extends JFrame implements Graph {
@@ -35,7 +34,8 @@ public class LineChartForCurrencyExchangeRateForecastingGraphImpl extends JFrame
         TimeSeriesCollection dataset = new TimeSeriesCollection();
         for (String currencyType : numberOfCurr) {
             String curr = currencyType;
-            List<DateAndCourseDto> csvRows = getCSVRows(curr);
+            CSVReader csvReader = new CSVReader();
+            List<DateAndCourseDto> csvRows = csvReader.getCSVRows(curr);
             List<DateAndCourseDto> result = predicator.rate(csvRows, algorithmType);
             dataset.addSeries(createDataset(result, curr));
         }

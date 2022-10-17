@@ -12,6 +12,6 @@ public class BotApplication {
     public static void main(String[] args) {
         log.debug("запуск телеграм-бота");
         SpringApplication.run(BotApplication.class, args);
-        log.debug("алгоритм отработан");
+        log.debug("телеграм-бот отключен");
     }
 }

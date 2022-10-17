@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
-
 public class OutputValidatorValidationImpl implements Validation {
     private final List<String> outputList = new ArrayList<>();
 
