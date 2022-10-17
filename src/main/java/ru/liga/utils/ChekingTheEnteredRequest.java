@@ -32,15 +32,11 @@ public class ChekingTheEnteredRequest {
         if (currency.length > 5) {
             throw new RuntimeException("Количество валют превышает 5");
         } else {
+            CurrencyValidationValidationImpl currVal = new CurrencyValidationValidationImpl();
             for (String curr : currency) {
-                CurrencyValidationValidationImpl currVal = new CurrencyValidationValidationImpl();
-                if (currVal.validate(curr) == "Неверный тип валюты") {
-                    throw new RuntimeException("Неверный тип валюты");
-                } else {
-                    numberOfCurrencyTypes.add(curr);
+                    numberOfCurrencyTypes.add(currVal.validate(curr));
                 }
             }
-        }
         log.debug("алгоритм отработан");
         return numberOfCurrencyTypes;
     }

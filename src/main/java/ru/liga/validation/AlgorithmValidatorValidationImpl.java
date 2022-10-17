@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
-
 public class AlgorithmValidatorValidationImpl implements Validation {
     private final List<String> algorithmList = new ArrayList<>();
 

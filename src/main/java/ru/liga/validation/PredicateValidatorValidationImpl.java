@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
-
 public class PredicateValidatorValidationImpl implements Validation {
     private final List<String> predicateList = new ArrayList<>();
 

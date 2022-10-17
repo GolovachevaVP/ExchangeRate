@@ -12,7 +12,6 @@ import java.util.Collections;
 import java.util.List;
 
 @Slf4j
-
 public class FutureDatePredicationPredicationImpl implements Predication {
     String date;
 

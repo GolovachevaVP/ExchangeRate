@@ -11,8 +11,6 @@ import java.util.Collections;
 import java.util.List;
 
 @Slf4j
-
-
 public class TomorrowPredicationPredicationImpl implements Predication {
 
     public List<DateAndCourseDto> rate(List<DateAndCourseDto> course, AlgorithmType algorithmType) {

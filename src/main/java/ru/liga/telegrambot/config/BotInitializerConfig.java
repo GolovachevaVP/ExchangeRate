@@ -11,15 +11,16 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
 import ru.liga.telegrambot.servise.TelegramBot;
 
+import javax.annotation.PostConstruct;
+
 
 @Slf4j
 @Component
 @RequiredArgsConstructor
 public class BotInitializerConfig {
-
     private final TelegramBot bot;
 
-    @EventListener({ContextRefreshedEvent.class})
+    @PostConstruct
     public void init() throws TelegramApiException {
         TelegramBotsApi telegramBotsApi = new TelegramBotsApi(DefaultBotSession.class);
         try {

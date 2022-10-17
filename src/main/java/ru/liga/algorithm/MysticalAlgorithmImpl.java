@@ -15,15 +15,17 @@ public class MysticalAlgorithmImpl implements Algorithm {
         LocalDate start = LocalDate.of(2005, 01, 01);
         long years = ChronoUnit.YEARS.between(start, date);
         LocalDate randomDate = date.minusYears(new Random().nextInt((int) years + 1));
-        double curs;
-        try {
-            curs = course.stream()
-                    .filter(dateAndCourseDto -> randomDate.equals(dateAndCourseDto.getDate()))
-                    .map(DateAndCourseDto::getCourse)
-                    .findFirst()
-                    .orElse(course.get(1).getCourse());
-        } catch (IndexOutOfBoundsException e) {
-            throw new RuntimeException("Нет значения за вчерашний день");
+        double curs = course.stream()
+                .filter(dateAndCourseDto -> randomDate.equals(dateAndCourseDto.getDate()))
+                .map(DateAndCourseDto::getCourse)
+                .findFirst()
+                .orElse(new DateAndCourseDto(0.0, null).getCourse());
+        if (curs == 0) {
+            if( course.size()>=2) {
+                curs = course.get(1).getCourse();
+            } else{
+                throw new RuntimeException("Нет значение за вчерашний день");
+            }
         }
         log.debug("алгоритм отработан");
         return curs;
