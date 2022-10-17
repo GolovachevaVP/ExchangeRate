@@ -16,6 +16,8 @@ import org.jfree.data.time.TimeSeries;
 import org.jfree.data.time.TimeSeriesCollection;
 import org.jfree.data.xy.XYDataset;
 import ru.liga.dto.DateAndCourseDto;
+import ru.liga.enums.AlgorithmType;
+import ru.liga.enums.CurrencyType;
 import ru.liga.predication.Predication;
 import ru.liga.utils.CSVReader;
 
@@ -27,13 +29,13 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 
 @Slf4j
-public class LineChartForCurrencyExchangeRateForecastingGraphImpl extends JFrame implements Graph {
-    public void initUI(List<String> numberOfCurr, Predication predicator, String algorithmType) throws IOException {
+public class LineChartForCurrencyExchangeRateForecastingGraphImpl extends JFrame {
+    public void initUI(List<CurrencyType> numberOfCurr, Predication predicator, AlgorithmType algorithmType) throws IOException {
         log.debug("обрабатывает информацию из других методов для постройки графика");
 
         TimeSeriesCollection dataset = new TimeSeriesCollection();
-        for (String currencyType : numberOfCurr) {
-            String curr = currencyType;
+        for (CurrencyType currencyType : numberOfCurr) {
+            CurrencyType curr = currencyType;
             CSVReader csvReader = new CSVReader();
             List<DateAndCourseDto> csvRows = csvReader.getCSVRows(curr);
             List<DateAndCourseDto> result = predicator.rate(csvRows, algorithmType);
@@ -56,21 +58,21 @@ public class LineChartForCurrencyExchangeRateForecastingGraphImpl extends JFrame
         log.debug("алгоритм отработан");
     }
 
-    private static TimeSeries createDataset(List<DateAndCourseDto> result, String currency) {
+    private static TimeSeries createDataset(List<DateAndCourseDto> result, CurrencyType currency) {
         log.debug("обрабатывает данные для постройки графика");
 
         TimeSeries series = new TimeSeries("rate " + currency);
-        for (int i = 0; i < result.size(); i++) {
-            int day = result.get(i).getDate().getDayOfMonth();
-            int month = result.get(i).getDate().getMonthValue();
-            int year = result.get(i).getDate().getYear();
-            series.add(new Day(day, month, year), result.get(i).getCourse());
+        for (DateAndCourseDto dateAndCourseDto : result) {
+            int day = dateAndCourseDto.getDate().getDayOfMonth();
+            int month = dateAndCourseDto.getDate().getMonthValue();
+            int year = dateAndCourseDto.getDate().getYear();
+            series.add(new Day(day, month, year), dateAndCourseDto.getCourse());
         }
         log.debug("алгоритм отработан");
         return series;
     }
 
-    private static JFreeChart createChart(final XYDataset dataset, List<String> numberOfCurr) throws IOException {
+    private static JFreeChart createChart(final XYDataset dataset, List<CurrencyType> numberOfCurr) throws IOException {
         log.debug("строит график и сохраняет его в png-формате.");
         JFreeChart chart = ChartFactory.createXYLineChart(
                 "Currency forecast",

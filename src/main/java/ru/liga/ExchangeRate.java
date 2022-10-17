@@ -2,12 +2,16 @@ package ru.liga;
 
 import lombok.extern.slf4j.Slf4j;
 import ru.liga.dto.DateAndCourseDto;
+import ru.liga.enums.AlgorithmType;
+import ru.liga.enums.CurrencyType;
+import ru.liga.enums.OutputType;
 import ru.liga.graph.LineChartForCurrencyExchangeRateForecastingGraphImpl;
 import ru.liga.predication.Predication;
 import ru.liga.predication.PredicationFactory;
 import ru.liga.utils.CSVReader;
 
 import java.io.IOException;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,24 +27,22 @@ public class ExchangeRate {
 
         log.debug("чтение запроса пользователя");
 
-        String request = text;
-
         List<String> courseList = new ArrayList<>();
-        String predicatorType = getPredicatorType(request);
-        String outputType = getOutputType(request);
-        if (!outputType.equals("") && (!predicatorType.equals("month") && !predicatorType.equals("week"))) {
+        String predicatorType = getPredicatorType(text);
+        OutputType outputType = getOutputType(text);
+        if (!outputType.equals(OutputType.WITHOUT_OUTPUT_TYPE) && (!predicatorType.equals("month") && !predicatorType.equals("week"))) {
             throw new RuntimeException("Уберите формат вывода.");
         }
-        String algorithmType = getAlgorithmType(request);
+        AlgorithmType algorithmType = getAlgorithmType(text);
         PredicationFactory predFactory = new PredicationFactory();
         Predication predicator = predFactory.getPredication(predicatorType);
-        List<String> numberOfCurr = searchCurrencies(request);
+        List<CurrencyType> numberOfCurr = searchCurrencies(text);
 
-        if (outputType.equals("") || outputType.equals("output list")) {
-            String currencyType = numberOfCurr.get(POSITION_FOR_CURRENCY);
+        if (outputType.equals(OutputType.WITHOUT_OUTPUT_TYPE) || outputType.equals(OutputType.LIST)) {
+            CurrencyType currencyType = numberOfCurr.get(POSITION_FOR_CURRENCY);
             CSVReader csvReader = new CSVReader();
             List<DateAndCourseDto> csvRows = csvReader.getCSVRows(currencyType);
-            System.out.println(request + ":");
+            System.out.println(text + ":");
             for (DateAndCourseDto res : predicator.rate(csvRows, algorithmType)) {
                 courseList.add(dateAndCourseDtoToString(res));
             }

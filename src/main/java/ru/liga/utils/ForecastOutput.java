@@ -8,6 +8,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.TextStyle;
 import java.util.Locale;
+
 @Slf4j
 public class ForecastOutput {
     static final String DATE_TIME_PATTERN = "dd.MM.yyyy";

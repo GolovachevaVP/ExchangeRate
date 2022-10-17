@@ -1,6 +1,8 @@
 package ru.liga.algorithm;
+
 import lombok.extern.slf4j.Slf4j;
 import ru.liga.dto.DateAndCourseDto;
+
 import java.time.LocalDate;
 import java.util.List;
 
@@ -19,9 +21,9 @@ public class LastYearAlgorithmImpl implements Algorithm {
 
 
         if (curs == 0) {
-            if( course.size()>=2) {
+            if (course.size() >= 2) {
                 curs = course.get(1).getCourse();
-            } else{
+            } else {
                 throw new RuntimeException("Нет значение за вчерашний день");
             }
         }

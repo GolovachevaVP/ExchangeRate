@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
-public class PredicateValidatorValidationImpl implements Validation {
+public class PredicateValidatorValidationImpl {
     private final List<String> predicateList = new ArrayList<>();
 
     {
@@ -18,7 +18,6 @@ public class PredicateValidatorValidationImpl implements Validation {
     }
 
 
-    @Override
     public String validate(String currencyForData) {
         log.debug("валидация периода прогноза");
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d.M.yyyy");

@@ -21,9 +21,9 @@ public class MysticalAlgorithmImpl implements Algorithm {
                 .findFirst()
                 .orElse(new DateAndCourseDto(0.0, null).getCourse());
         if (curs == 0) {
-            if( course.size()>=2) {
+            if (course.size() >= 2) {
                 curs = course.get(1).getCourse();
-            } else{
+            } else {
                 throw new RuntimeException("Нет значение за вчерашний день");
             }
         }

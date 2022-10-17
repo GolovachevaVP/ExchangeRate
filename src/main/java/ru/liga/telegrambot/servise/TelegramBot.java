@@ -12,12 +12,12 @@ import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
 import org.telegram.telegrambots.meta.api.objects.InputFile;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
+import ru.liga.enums.CommandsTelegramBot;
 import ru.liga.telegrambot.property.BotConfig;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.net.URL;
 
 import static ru.liga.ExchangeRate.invoke;
 
@@ -68,30 +68,37 @@ public class TelegramBot extends TelegramLongPollingBot {
         if (update.hasMessage() && update.getMessage().hasText()) {
             String messageText = update.getMessage().getText();
             Long chatId = update.getMessage().getChatId();
-            if (messageText.equals("/start") || messageText.equals("")) {
-                log.info("пользователь ввел команду /start");
+            if (messageText.equals("")) {
                 sendMessage(chatId, startCommandReceived());
-            } else if (messageText.equals("/help")) {
-                log.info("пользователь ввел команду /help");
-                sendMessage(chatId, helpCommandReceived());
-            } else {
-                log.info("пользователь ввел запрос - {}", messageText);
-                try {
-                    if (messageText.contains("graph")) {
-                        invoke(messageText);
-                        try {
-                            log.info("отправление графика курса валют на запрос пользователя");
-                            sendPhoto(chatId);
-                        } catch (FileNotFoundException | TelegramApiException e) {
-                            e.printStackTrace();
+            }
+            CommandsTelegramBot commandsTelegramBot = CommandsTelegramBot.fromString(messageText);
+            switch (commandsTelegramBot) {
+                case START:
+                    log.info("пользователь ввел команду /start");
+                    sendMessage(chatId, startCommandReceived());
+                    break;
+                case HELP:
+                    log.info("пользователь ввел команду /help");
+                    sendMessage(chatId, helpCommandReceived());
+                    break;
+                case OTHER_REQUEST:
+                    log.info("пользователь ввел запрос - {}", messageText);
+                    try {
+                        if (messageText.contains("graph")) {
+                            invoke(messageText);
+                            try {
+                                log.info("отправление графика курса валют на запрос пользователя");
+                                sendPhoto(chatId);
+                            } catch (FileNotFoundException | TelegramApiException e) {
+                                e.printStackTrace();
+                            }
+                        } else {
+                            log.info("отправление сообщения с прогнозом курса валюты");
+                            sendMessage(chatId, invoke(messageText));
                         }
-                    } else {
-                        log.info("отправление сообщения с прогнозом курса валюты");
-                        sendMessage(chatId, invoke(messageText));
+                    } catch (RuntimeException | IOException e) {
+                        sendMessage(chatId, e.getMessage());
                     }
-                } catch (RuntimeException | IOException e) {
-                    sendMessage(chatId, e.getMessage());
-                }
             }
         }
     }
@@ -106,10 +113,9 @@ public class TelegramBot extends TelegramLongPollingBot {
     }
 
     private void sendPhoto(long chatId) throws FileNotFoundException, TelegramApiException {
-        //URL image = getClass().getClassLoader().getResource("line_chart.png");
         File image = ResourceUtils.getFile("src/main/resources/line_chart.png");
         SendPhoto sendPhoto = new SendPhoto();
-        sendPhoto.setPhoto(new InputFile(String.valueOf(image)));
+        sendPhoto.setPhoto(new InputFile(image));
         sendPhoto.setChatId(String.valueOf(chatId));
         sendPhoto.setCaption("График валют");
         execute(sendPhoto);

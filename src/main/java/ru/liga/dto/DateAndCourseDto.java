@@ -1,6 +1,5 @@
 package ru.liga.dto;
 
-import lombok.Getter;
 import lombok.Value;
 
 import java.time.LocalDate;

@@ -1,14 +1,13 @@
 package ru.liga.utils;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.util.ResourceUtils;
 import ru.liga.dto.DateAndCourseDto;
+import ru.liga.enums.CurrencyType;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.net.URL;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -24,12 +23,11 @@ public class CSVReader {
     private static final String COURSE_NAME = "curs";
     private static final String DATE_NAME = "data";
 
-    public  List<DateAndCourseDto> getCSVRows(String currencyType) throws IOException {
+    public List<DateAndCourseDto> getCSVRows(CurrencyType currencyType) throws IOException {
         log.debug("читает файлы scv и добавляет в ArrayList дату и курс валюты");
         String line;
         List<DateAndCourseDto> course = new ArrayList<>();
-        String csvFilePath = "src/main/resources/CSVFile/" + currencyType + ".csv";
-        //URL csvFilePath = getClass().getClassLoader().getResource("csv/"+currencyType + ".csv");
+        String csvFilePath = "src/main/resources/csv/" + currencyType + ".csv";
         try (BufferedReader br = new BufferedReader(new FileReader(String.valueOf(csvFilePath)))) {
             List<String> firstLine = List.of(br.readLine().split(";"));
             int coursePosition = firstLine.indexOf(COURSE_NAME);

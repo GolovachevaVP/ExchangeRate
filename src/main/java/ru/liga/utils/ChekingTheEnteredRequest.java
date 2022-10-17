@@ -3,10 +3,8 @@ package ru.liga.utils;
 
 import lombok.extern.slf4j.Slf4j;
 import ru.liga.enums.AlgorithmType;
-import ru.liga.validation.AlgorithmValidatorValidationImpl;
-import ru.liga.validation.CurrencyValidationValidationImpl;
-import ru.liga.validation.OutputValidatorValidationImpl;
-import ru.liga.validation.PredicateValidatorValidationImpl;
+import ru.liga.enums.CurrencyType;
+import ru.liga.enums.OutputType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,11 +15,10 @@ public class ChekingTheEnteredRequest {
     private static final int POSITION_FOR_DATA = 1;
     private static final int POSITION_FOR_ALGORITHM = 2;
     private static final int POSITION_FOR_OUPUT = 3;
-    private static final int POSITION_FOR_ALGORITHM_TYPE = 1;
 
-    public static List<String> searchCurrencies(String input) {
+    public static List<CurrencyType> searchCurrencies(String input) {
         log.debug("выделяет из запроса валюты и считает их количество");
-        List<String> numberOfCurrencyTypes = new ArrayList<>();
+        List<CurrencyType> currencyTypes = new ArrayList<>();
         if (!input.contains("rate")) {
             throw new RuntimeException("Неправильно написано слово - rate");
         }
@@ -32,28 +29,26 @@ public class ChekingTheEnteredRequest {
         if (currency.length > 5) {
             throw new RuntimeException("Количество валют превышает 5");
         } else {
-            CurrencyValidationValidationImpl currVal = new CurrencyValidationValidationImpl();
             for (String curr : currency) {
-                    numberOfCurrencyTypes.add(currVal.validate(curr));
-                }
+                currencyTypes.add(CurrencyType.fromString(curr));
             }
-        log.debug("алгоритм отработан");
-        return numberOfCurrencyTypes;
-    }
-
-    public static String getOutputType(String input) {
-        log.debug("выделяет и проверяет тип вывода в запросе пользователя");
-        String[] outrutType = input.split(" -");
-        if (outrutType.length != 4 && (outrutType[POSITION_FOR_DATA].equals("period week") ||
-                outrutType[POSITION_FOR_DATA].equals("period month"))) {
-            throw new RuntimeException("Неверный тип вывода");
-        } else if (outrutType.length == 4) {
-            String output = outrutType[POSITION_FOR_OUPUT];
-            OutputValidatorValidationImpl outVal = new OutputValidatorValidationImpl();
-            return outVal.validate(output);
         }
         log.debug("алгоритм отработан");
-        return "";
+        return currencyTypes;
+    }
+
+    public static OutputType getOutputType(String input) {
+        log.debug("выделяет и проверяет тип вывода в запросе пользователя");
+        String[] outputType = input.split(" -");
+        if (outputType.length != 4 && (outputType[POSITION_FOR_DATA].equals("period week") ||
+                outputType[POSITION_FOR_DATA].equals("period month"))) {
+            throw new RuntimeException("Неверный тип вывода");
+        } else if (outputType.length == 4) {
+            String output = outputType[POSITION_FOR_OUPUT];
+            return OutputType.fromString(output);
+        }
+        log.debug("алгоритм отработан");
+        return OutputType.WITHOUT_OUTPUT_TYPE;
     }
 
     public static String getPredicatorType(String input) {
@@ -63,18 +58,15 @@ public class ChekingTheEnteredRequest {
             throw new RuntimeException("Неправильный запрос");
         }
         String[] predicate = pridicateType[POSITION_FOR_DATA].split(" ");
-        PredicateValidatorValidationImpl predVal = new PredicateValidatorValidationImpl();
         log.debug("алгоритм отработан");
-        return predVal.validate(predicate[POSITION_FOR_DATA]);
+        return predicate[POSITION_FOR_DATA];
     }
 
     public static AlgorithmType getAlgorithmType(String input) {
         log.debug("выделяет из запроса алгоритм прогнозирования");
-        String[] algorithmType = input.split(" -");
-        String[] alg = algorithmType[POSITION_FOR_ALGORITHM].split(" ");
-
-        AlgorithmValidatorValidationImpl algVal = new AlgorithmValidatorValidationImpl();
+        String[] partOfAlgorithmType = input.split(" -");
+        String alg = partOfAlgorithmType[POSITION_FOR_ALGORITHM];
         log.debug("алгоритм отработан");
-        return AlgorithmType.valueOf(algVal.validate(alg[POSITION_FOR_ALGORITHM_TYPE]));
+        return AlgorithmType.fromString(alg);
     }
 }
