@@ -2,7 +2,7 @@ package ru.liga.utils;
 
 import lombok.extern.slf4j.Slf4j;
 import ru.liga.dto.DateAndCourseDto;
-import ru.liga.enums.CurrencyType;
+import ru.liga.enums.CurrencyTypeEnum;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -23,12 +23,12 @@ public class CSVReader {
     private static final String COURSE_NAME = "curs";
     private static final String DATE_NAME = "data";
 
-    public List<DateAndCourseDto> getCSVRows(CurrencyType currencyType) throws IOException {
+    public List<DateAndCourseDto> getCSVRows(CurrencyTypeEnum currencyTypeEnum) throws IOException {
         log.debug("читает файлы scv и добавляет в ArrayList дату и курс валюты");
         String line;
         List<DateAndCourseDto> course = new ArrayList<>();
-        String csvFilePath = "src/main/resources/csv/" + currencyType + ".csv";
-        try (BufferedReader br = new BufferedReader(new FileReader(String.valueOf(csvFilePath)))) {
+        String csvFilePath = "src/main/resources/csv/" + currencyTypeEnum + ".csv";
+        try (BufferedReader br = new BufferedReader(new FileReader(csvFilePath))) {
             List<String> firstLine = List.of(br.readLine().split(";"));
             int coursePosition = firstLine.indexOf(COURSE_NAME);
             int datePosition = firstLine.indexOf(DATE_NAME);

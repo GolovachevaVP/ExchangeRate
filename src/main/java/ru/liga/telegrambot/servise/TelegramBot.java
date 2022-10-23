@@ -12,7 +12,7 @@ import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
 import org.telegram.telegrambots.meta.api.objects.InputFile;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
-import ru.liga.enums.CommandsTelegramBot;
+import ru.liga.enums.CommandsTelegramBotEnum;
 import ru.liga.telegrambot.property.BotConfig;
 
 import java.io.File;
@@ -71,8 +71,8 @@ public class TelegramBot extends TelegramLongPollingBot {
             if (messageText.equals("")) {
                 sendMessage(chatId, startCommandReceived());
             }
-            CommandsTelegramBot commandsTelegramBot = CommandsTelegramBot.fromString(messageText);
-            switch (commandsTelegramBot) {
+            CommandsTelegramBotEnum commandsTelegramBotEnum = CommandsTelegramBotEnum.fromString(messageText);
+            switch (commandsTelegramBotEnum) {
                 case START:
                     log.info("пользователь ввел команду /start");
                     sendMessage(chatId, startCommandReceived());

@@ -12,7 +12,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import static ru.liga.enums.AlgorithmType.*;
+import static ru.liga.enums.AlgorithmTypeEnum.*;
 
 
 public class PredicationTest {

@@ -1,10 +1,10 @@
 package ru.liga.predication;
 
 import ru.liga.dto.DateAndCourseDto;
-import ru.liga.enums.AlgorithmType;
+import ru.liga.enums.AlgorithmTypeEnum;
 
 import java.util.List;
 
 public interface Predication {
-    public List<DateAndCourseDto> rate(List<DateAndCourseDto> course, AlgorithmType algorithmType);
+    public List<DateAndCourseDto> rate(List<DateAndCourseDto> course, AlgorithmTypeEnum algorithmTypeEnum);
 }

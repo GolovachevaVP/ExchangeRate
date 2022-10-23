@@ -5,19 +5,19 @@ import java.util.Arrays;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public enum CommandsTelegramBot {
+public enum CommandsTelegramBotEnum {
 
     START("/start"),
     HELP("/help"),
     OTHER_REQUEST("");
     final String command;
 
-    CommandsTelegramBot(String command) {
+    CommandsTelegramBotEnum(String command) {
         this.command = command;
     }
 
-    private static final Map<String, CommandsTelegramBot> roles = Arrays
-            .stream(CommandsTelegramBot.values())
+    private static final Map<String, CommandsTelegramBotEnum> roles = Arrays
+            .stream(CommandsTelegramBotEnum.values())
             .map(r -> new AbstractMap.SimpleEntry<>(r.command, r))
             .collect(
                     Collectors.toMap(
@@ -26,11 +26,11 @@ public enum CommandsTelegramBot {
                     )
             );
 
-    public static CommandsTelegramBot fromString(String command) {
-        CommandsTelegramBot commandsTelegramBot = roles.get(command);
-        if (commandsTelegramBot == null) {
-            return CommandsTelegramBot.OTHER_REQUEST;
+    public static CommandsTelegramBotEnum fromString(String command) {
+        CommandsTelegramBotEnum commandsTelegramBotEnum = roles.get(command);
+        if (commandsTelegramBotEnum == null) {
+            return CommandsTelegramBotEnum.OTHER_REQUEST;
         }
-        return commandsTelegramBot;
+        return commandsTelegramBotEnum;
     }
 }

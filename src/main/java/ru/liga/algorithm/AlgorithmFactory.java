@@ -1,10 +1,10 @@
 package ru.liga.algorithm;
 
-import ru.liga.enums.AlgorithmType;
+import ru.liga.enums.AlgorithmTypeEnum;
 
 public class AlgorithmFactory {
 
-    public Algorithm getAlgorithm(AlgorithmType type) {
+    public Algorithm getAlgorithm(AlgorithmTypeEnum type) {
         switch (type) {
             case LAST_YEAR:
                 return new LastYearAlgorithmImpl();

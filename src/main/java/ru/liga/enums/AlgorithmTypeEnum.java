@@ -5,19 +5,19 @@ import java.util.Arrays;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public enum AlgorithmType {
+public enum AlgorithmTypeEnum {
 
     LAST_YEAR("alg lastYear"),
     MIST("alg mist"),
     LINEAR("alg linReg");
     final String algType;
 
-    AlgorithmType(String algType) {
+    AlgorithmTypeEnum(String algType) {
         this.algType = algType;
     }
 
-    private static final Map<String, AlgorithmType> roles = Arrays
-            .stream(AlgorithmType.values())
+    private static final Map<String, AlgorithmTypeEnum> roles = Arrays
+            .stream(AlgorithmTypeEnum.values())
             .map(r -> new AbstractMap.SimpleEntry<>(r.algType, r))
             .collect(
                     Collectors.toMap(
@@ -26,11 +26,11 @@ public enum AlgorithmType {
                     )
             );
 
-    public static AlgorithmType fromString(String algType) {
-        AlgorithmType algorithmType = roles.get(algType);
-        if (algorithmType == null) {
+    public static AlgorithmTypeEnum fromString(String algType) {
+        AlgorithmTypeEnum algorithmTypeEnum = roles.get(algType);
+        if (algorithmTypeEnum == null) {
             throw new RuntimeException("Неверный алгоритм");
         }
-        return algorithmType;
+        return algorithmTypeEnum;
     }
 }

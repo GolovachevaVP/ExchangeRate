@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public enum CurrencyType {
+public enum CurrencyTypeEnum {
 
     USD("USD"),
     EUR("EUR"),
@@ -14,12 +14,12 @@ public enum CurrencyType {
     TRY("TRY");
     final String currencyType;
 
-    CurrencyType(String currencyType) {
+    CurrencyTypeEnum(String currencyType) {
         this.currencyType = currencyType;
     }
 
-    private static final Map<String, CurrencyType> roles = Arrays
-            .stream(CurrencyType.values())
+    private static final Map<String, CurrencyTypeEnum> roles = Arrays
+            .stream(CurrencyTypeEnum.values())
             .map(r -> new AbstractMap.SimpleEntry<>(r.currencyType, r))
             .collect(
                     Collectors.toMap(
@@ -28,8 +28,8 @@ public enum CurrencyType {
                     )
             );
 
-    public static CurrencyType fromString(String currencyType) {
-        CurrencyType type = roles.get(currencyType.toUpperCase());
+    public static CurrencyTypeEnum fromString(String currencyType) {
+        CurrencyTypeEnum type = roles.get(currencyType.toUpperCase());
         if (type == null) {
             throw new RuntimeException("Неверный тип валюты");
         }

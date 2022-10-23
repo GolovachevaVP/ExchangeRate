@@ -2,9 +2,9 @@ package ru.liga.utils;
 
 
 import lombok.extern.slf4j.Slf4j;
-import ru.liga.enums.AlgorithmType;
-import ru.liga.enums.CurrencyType;
-import ru.liga.enums.OutputType;
+import ru.liga.enums.AlgorithmTypeEnum;
+import ru.liga.enums.CurrencyTypeEnum;
+import ru.liga.enums.OutputTypeEnum;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,9 +16,9 @@ public class ChekingTheEnteredRequest {
     private static final int POSITION_FOR_ALGORITHM = 2;
     private static final int POSITION_FOR_OUPUT = 3;
 
-    public static List<CurrencyType> searchCurrencies(String input) {
+    public static List<CurrencyTypeEnum> searchCurrencies(String input) {
         log.debug("выделяет из запроса валюты и считает их количество");
-        List<CurrencyType> currencyTypes = new ArrayList<>();
+        List<CurrencyTypeEnum> currencyTypeEnums = new ArrayList<>();
         if (!input.contains("rate")) {
             throw new RuntimeException("Неправильно написано слово - rate");
         }
@@ -30,14 +30,14 @@ public class ChekingTheEnteredRequest {
             throw new RuntimeException("Количество валют превышает 5");
         } else {
             for (String curr : currency) {
-                currencyTypes.add(CurrencyType.fromString(curr));
+                currencyTypeEnums.add(CurrencyTypeEnum.fromString(curr));
             }
         }
         log.debug("алгоритм отработан");
-        return currencyTypes;
+        return currencyTypeEnums;
     }
 
-    public static OutputType getOutputType(String input) {
+    public static OutputTypeEnum getOutputType(String input) {
         log.debug("выделяет и проверяет тип вывода в запросе пользователя");
         String[] outputType = input.split(" -");
         if (outputType.length != 4 && (outputType[POSITION_FOR_DATA].equals("period week") ||
@@ -45,10 +45,10 @@ public class ChekingTheEnteredRequest {
             throw new RuntimeException("Неверный тип вывода");
         } else if (outputType.length == 4) {
             String output = outputType[POSITION_FOR_OUPUT];
-            return OutputType.fromString(output);
+            return OutputTypeEnum.fromString(output);
         }
         log.debug("алгоритм отработан");
-        return OutputType.WITHOUT_OUTPUT_TYPE;
+        return OutputTypeEnum.WITHOUT_OUTPUT_TYPE;
     }
 
     public static String getPredicatorType(String input) {
@@ -62,11 +62,11 @@ public class ChekingTheEnteredRequest {
         return predicate[POSITION_FOR_DATA];
     }
 
-    public static AlgorithmType getAlgorithmType(String input) {
+    public static AlgorithmTypeEnum getAlgorithmType(String input) {
         log.debug("выделяет из запроса алгоритм прогнозирования");
         String[] partOfAlgorithmType = input.split(" -");
         String alg = partOfAlgorithmType[POSITION_FOR_ALGORITHM];
         log.debug("алгоритм отработан");
-        return AlgorithmType.fromString(alg);
+        return AlgorithmTypeEnum.fromString(alg);
     }
 }

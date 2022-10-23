@@ -16,8 +16,8 @@ import org.jfree.data.time.TimeSeries;
 import org.jfree.data.time.TimeSeriesCollection;
 import org.jfree.data.xy.XYDataset;
 import ru.liga.dto.DateAndCourseDto;
-import ru.liga.enums.AlgorithmType;
-import ru.liga.enums.CurrencyType;
+import ru.liga.enums.AlgorithmTypeEnum;
+import ru.liga.enums.CurrencyTypeEnum;
 import ru.liga.predication.Predication;
 import ru.liga.utils.CSVReader;
 
@@ -30,15 +30,15 @@ import java.util.List;
 
 @Slf4j
 public class LineChartForCurrencyExchangeRateForecastingGraphImpl extends JFrame {
-    public void initUI(List<CurrencyType> numberOfCurr, Predication predicator, AlgorithmType algorithmType) throws IOException {
+    public void initUI(List<CurrencyTypeEnum> numberOfCurr, Predication predicator, AlgorithmTypeEnum algorithmTypeEnum) throws IOException {
         log.debug("обрабатывает информацию из других методов для постройки графика");
 
         TimeSeriesCollection dataset = new TimeSeriesCollection();
-        for (CurrencyType currencyType : numberOfCurr) {
-            CurrencyType curr = currencyType;
+        for (CurrencyTypeEnum currencyTypeEnum : numberOfCurr) {
+            CurrencyTypeEnum curr = currencyTypeEnum;
             CSVReader csvReader = new CSVReader();
             List<DateAndCourseDto> csvRows = csvReader.getCSVRows(curr);
-            List<DateAndCourseDto> result = predicator.rate(csvRows, algorithmType);
+            List<DateAndCourseDto> result = predicator.rate(csvRows, algorithmTypeEnum);
             dataset.addSeries(createDataset(result, curr));
         }
 
@@ -58,7 +58,7 @@ public class LineChartForCurrencyExchangeRateForecastingGraphImpl extends JFrame
         log.debug("алгоритм отработан");
     }
 
-    private static TimeSeries createDataset(List<DateAndCourseDto> result, CurrencyType currency) {
+    private static TimeSeries createDataset(List<DateAndCourseDto> result, CurrencyTypeEnum currency) {
         log.debug("обрабатывает данные для постройки графика");
 
         TimeSeries series = new TimeSeries("rate " + currency);
@@ -72,7 +72,7 @@ public class LineChartForCurrencyExchangeRateForecastingGraphImpl extends JFrame
         return series;
     }
 
-    private static JFreeChart createChart(final XYDataset dataset, List<CurrencyType> numberOfCurr) throws IOException {
+    private static JFreeChart createChart(final XYDataset dataset, List<CurrencyTypeEnum> numberOfCurr) throws IOException {
         log.debug("строит график и сохраняет его в png-формате.");
         JFreeChart chart = ChartFactory.createXYLineChart(
                 "Currency forecast",
