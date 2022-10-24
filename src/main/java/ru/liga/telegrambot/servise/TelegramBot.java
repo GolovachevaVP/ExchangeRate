@@ -115,8 +115,45 @@ public class TelegramBot extends TelegramLongPollingBot {
         execute(sendPhoto);
     }
 
-    private String startCommandReceived() {
-        return START_ANSWER;
+    //    public void createCurrencyButtons(long chatId) throws TelegramApiException {
+//
+//        SendMessage message = new SendMessage();
+//        message.setChatId(String.valueOf(chatId));
+//        message.setText("Здравствуй! Я телеграм-бот, который поможет тебе узнать курс валюты.\n Хочешь узнать курс валюты?");
+//
+//        InlineKeyboardMarkup markupInLine = new InlineKeyboardMarkup();
+//        List<List<InlineKeyboardButton>> rowsInLine = new ArrayList<>();
+//        List<InlineKeyboardButton> rowInLine = new ArrayList<>();
+//        var yesButton = new InlineKeyboardButton();
+//
+//        yesButton.setText("Yes");
+//        yesButton.setCallbackData("YES_BUTTON");
+//
+//        var noButton = new InlineKeyboardButton();
+//
+//        noButton.setText("No");
+//        noButton.setCallbackData("NO_BUTTON");
+//
+//        rowInLine.add(yesButton);
+//        rowInLine.add(noButton);
+//
+//        rowsInLine.add(rowInLine);
+//
+//        markupInLine.setKeyboard(rowsInLine);
+//        message.setReplyMarkup(markupInLine);
+//
+//        execute(message);
+//    }
+    private String startCommandReceived(Long chatId) {
+
+        return "Здравствуй! Я телеграм-бот, который поможет тебе узнать курс валюты.\n\n" +
+                "Вот, несколько примеров, которые можно взять за основу твоих запросов:\n" +
+                "rate TRY -date tomorrow -alg mist\n" +
+                "rate TRY -date 22.02.2030 -alg mist\n" +
+                "rate USD -period week -alg mist -output list\n" +
+                "rate USD,TRY -period month -alg lastYear -output graph\n\n" +
+                "С объяснением моего запуска я закончил, а теперь попробуй узнать у меня прогноз курса валют," +
+                " введя его в строку ввода сообщения! Если тебе нужна помощь напиши /help";
     }
 
     private String helpCommandReceived() {
